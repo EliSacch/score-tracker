@@ -65,14 +65,14 @@ A simple and intiuitive navigation, to use for your games.
 <details>
   <summary>Mobile</summary>
 
-   ![Mobile Wireframes]() 
+   ![Mobile Wireframes](media/Mobile.png) 
 
 </details>
 
 <details>
   <summary>Desktop</summary>
 
-   ![Desktop Wireframes]() 
+   ![Desktop Wireframes](media/Desktop.png) 
 
 </details>
 
