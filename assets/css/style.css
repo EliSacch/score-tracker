@@ -5,7 +5,7 @@
     /* color scheme */
     --primary-color: hsl(139, 51%, 42%);
     --secondary-color: hsl(341, 98%, 56%);
-    --dark-color: hsl(0, 0%, 7%);
+    --dark-color: hsl(0, 2%, 16%);
     --neutral-color: hsl(38, 89%, 86%);
 
     /* fonts */
@@ -39,7 +39,6 @@ body {
 
 .content {
     width:fit-content;
-    height: 100vh;
     margin: 0 auto;
 }
 
@@ -58,12 +57,14 @@ body {
     gap: 1em;
 }
 
-
-.btn-rectangular {
+.btn {
     background-color: transparent;
     color: inherit;
-    
     font-size: .6em;
+}
+
+
+.btn-rectangular {
     font-family: inherit;
     padding: .5em;
 
@@ -100,6 +101,46 @@ button.btn-rectangular:hover,
 }
 
 
+/* game page */
+
+.small-logo {
+    font-size: 1.5rem;
+}
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .5em 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu > ul {
+    list-style: none;
+    gap: .25em;
+       
+}
+
+.menu > ul > li {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+}
+
+.menu-button {
+    border: none;   
+}
+
+li .menu-button:hover > i,
+li .menu-button:focus > i {
+    opacity: .8;
+    transform: scale(1.2);
+}
+
+
+
 
 /* footer */
 
@@ -117,6 +158,9 @@ li a:focus > i {
     opacity: .8;
     transform: rotate(10deg);
     transition: transform .5s ease-in-out;
-    border: none;
-    outline: none;
+}
+
+#powered {
+    font-size: 1rem;
+    margin: 1rem;
 }
