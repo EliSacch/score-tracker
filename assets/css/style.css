@@ -38,7 +38,8 @@ body {
 }
 
 .content {
-    width:fit-content;
+    width:90%;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -47,7 +48,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1em;
     text-align: center;
 }
 
@@ -55,6 +55,11 @@ body {
     display: flex;
     flex-direction: row;
     gap: 1em;
+}
+
+.full-height {
+    display: grid;
+    grid-template-rows: 10% 1fr 20%;
 }
 
 .btn {
@@ -67,7 +72,7 @@ body {
 .btn-rectangular {
     font-family: inherit;
     padding: .5em;
-
+    margin: .6em 0;
     border: 1px solid white;
     border-radius: 3px;
     box-shadow: 
@@ -97,7 +102,7 @@ button.btn-rectangular:hover,
 /*landing page */
 
 .actions {
-    margin: 1em 0;
+    margin: 2em 0;
 }
 
 
@@ -106,10 +111,8 @@ button.btn-rectangular:hover,
 .small-logo {
     font-size: 1.5rem;
 }
+
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
     padding: .5em 0;
     width: 100%;
     display: flex;
@@ -139,10 +142,31 @@ li .menu-button:focus > i {
     transform: scale(1.2);
 }
 
+.title {
+    font-size: .4em;
+    text-align: left;
+    width: 100%;
+}
 
+.empty {
+    display: block;
+    opacity: .2;
+    text-align: center;
+    margin: 0;
+}
+.empty p {
+    font-size: .6em;
+}
 
+.empty i {
+    font-size: 5em;
+}
 
 /* footer */
+
+footer {
+    padding: 10px;
+}
 
 footer > ul {
     list-style: none;
@@ -162,5 +186,5 @@ li a:focus > i {
 
 #powered {
     font-size: 1rem;
-    margin: 1rem;
+    margin: 5px
 }
