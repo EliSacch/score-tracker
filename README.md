@@ -46,7 +46,24 @@ A simple and intiuitive navigation, to use for your games.
 
 ### Design
 
-- The design is inspired by the "Darts" game, which inspired this webpage.
+The design is based on the "Darts" game, which inspired this webpage.
+
+- Color scheme inspiration:
+![Darts](media/color-scheme-inspiration.jpg)
+- Primary Color:
+
+![Primary color](media/primary-color.png)
+- Secondary Color:
+
+![Secondary color](media/secondary-color.png)
+- Dark Color:
+
+![Dark color](media/dark-color.png)
+- Neutral Color:
+
+![Neutral color](media/neutral-color.png)
+
+
 
 ### User Stories
 
@@ -213,6 +230,8 @@ The live link can be found here - [Live Website]()
 ### Media
 
 - The photos used for this website are from [Unsplash](https://unsplash.com/)
+  - Darts photo by [Immo Wegmann](https://unsplash.com/@macroman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+  
   
 
 

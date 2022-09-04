@@ -1,0 +1,9 @@
+:root {
+
+    /* color scheme */
+    --primary-color: hsl(139, 51%, 42%);
+    --secondary-color: hsl(341, 98%, 56%);
+    --dark-color: hsl(0, 0%, 7%);
+    --neutral-color: hsl(38, 89%, 86%);
+
+}
