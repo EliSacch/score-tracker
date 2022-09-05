@@ -164,7 +164,9 @@ header {
 
 
 /* modals*/
-
+#new-player {
+    display: none;
+}
 .modal::after {
     content: "";
     position: absolute;
@@ -233,7 +235,9 @@ footer {
 
 footer > ul {
     list-style: none;
+    font-size: .6em;
 }
+
 
 li > a {
     text-decoration: none;
@@ -251,3 +255,4 @@ li a:focus > i {
     font-size: 1rem;
     margin: 5px
 }
+

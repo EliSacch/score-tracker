@@ -4,7 +4,35 @@
 document.addEventListener("DOMContentLoaded", function() {
     toggleEmptyDivPlaceholder();
     listenDeleteButton();
+
+    /* The following code was taken from the Code Institute course content.*/
+    let buttons = document.getElementsByTagName('button');
+    for(let button of buttons ) {
+        button.addEventListener("click", function() {
+            let buttonAction = this.getAttribute("data-type");
+    /*End of code from coure*/
+            switch (buttonAction) {
+                case "openAddPlayer":
+                openAddPlayer();
+                break;
+                case "hideParent":
+                hideParent(button.parentNode.parentNode);
+                break;
+            }
+        })
+    }
 });
+
+
+
+function openAddPlayer() {
+    let modal = document.getElementById('new-player');
+    modal.style.display = "block";
+}
+
+function hideParent(parent) {
+    parent.style.display = "none";
+}
 
 let playersList = document.getElementById('players');
 
@@ -24,7 +52,18 @@ function toggleEmptyDivPlaceholder() {
         }
     }
 }
-    
+
+
+/**
+ * Add event listener to detele player buttons.
+ * */
+ function listenDeleteButton() {
+    let deletePlayers = document.getElementsByClassName('xx');
+    for(let deletePlayer of deletePlayers) {
+        deletePlayer.addEventListener("click", removeIt);
+    }
+}
+
 let playersN = 0;
 /**
  * This functions adds a new line for each player added.
@@ -39,19 +78,9 @@ function addPlayer() {
 }
 
 /**
- * Add event listener to detele player buttons.
- * */
-function listenDeleteButton() {
-    let deletePlayers = document.getElementsByClassName('xx');
-    for(deletePlayer of deletePlayers) {
-        deletePlayer.addEventListener("click", removeIt);
-    }
-}
-
-/**
  * Remove Player From Players div and show placeholder if div is empty.
  */
-function removeIt() {
+function removeParent() {
     this.parentNode.remove();
     toggleEmptyDivPlaceholder();
 }

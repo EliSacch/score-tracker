@@ -218,11 +218,18 @@ The live link can be found here - [Live Website]()
 
 ## Credits 
 
+### Code
+
+The code for adding an event listener using data-type was taken from the [Code Institute course](https://codeinstitute.net/global/)
+
+Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event Listeners.
+
 ### Content
 
 - Instructions on how to ##### were taken from [Site name](link)
 
 - The icons were taken from [Font Awesome](https://fontawesome.com/)
+
 - The following fonts, used for the project, are from [Google Fonts](https://fonts.google.com/):
   - 
   - 
