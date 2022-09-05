@@ -37,10 +37,19 @@
 
         </div>
         <p class="title">Scores:</p>
-        <div id="players-score" class="display-area">
-            
-            <button onclick="addPlayer()">add</button>
 
+        <div class="modal" id="newPlayer">
+            <div class="modal-action-area center-items">
+                <button class="btn btn-close menu-button"><i class="fas fa-times"></i></button>
+                <div class="center-items">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" autofocus>
+                    <label for="initialScore">Initial Score:</label>
+                    <input type="number" id="initialScore" name="initialScore">
+                    <button type="submit" class="btn btn-rectangular" id="addPlayer">Add player</button>
+                </div>
+                    
+            </div>
         </div>
 
     </div>

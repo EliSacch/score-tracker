@@ -159,7 +159,7 @@ To test my website I have opened it on different devices, to see if it was worki
   - Errors returned when passing the final version through the official [W3C validator](https://validator.w3.org/nu/#textarea)
 - CSS
   - Errors when passing the final version through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator/validator)
-
+- JavaScript
   - Errors found when passing the final version through the official [Jshint validator](https://jshint.com/)
 
 ### Fixed Bugs

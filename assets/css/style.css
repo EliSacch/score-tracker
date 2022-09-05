@@ -136,8 +136,8 @@ header {
     border: none;   
 }
 
-li .menu-button:hover > i,
-li .menu-button:focus > i {
+.menu-button:hover > i,
+.menu-button:focus > i {
     opacity: .8;
     transform: scale(1.2);
 }
@@ -160,6 +160,68 @@ li .menu-button:focus > i {
 
 .empty i {
     font-size: 5em;
+}
+
+
+/* modals*/
+
+.modal::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.7);
+    isolation: isolate;
+}
+
+.modal-action-area {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+    font-size: 1.5rem;
+    height: 50%;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+
+    border: 1px solid white;
+    border-radius: 3px;
+    box-shadow: 
+    0 0 0 4px var(--dark-color),
+    0 0 0 5px white
+    ;
+    
+    background-color: var(--dark-color);
+}
+
+.modal-action-area input {
+    margin: .5em 0 2em ;
+    background-color: inherit;
+    border: 1px solid var(--neutral-color);
+    padding: .4em;
+    color: inherit;
+}
+
+.modal-action-area input:hover,
+.modal-action-area input:focus {
+    box-shadow: 0 0 5px 1px;
+}
+
+.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1em;
+}
+
+.btn-close:hover,
+.btn-close:focus {
+    color: var(--secondary-color);
 }
 
 
