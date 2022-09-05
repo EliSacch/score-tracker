@@ -43,30 +43,39 @@
         <div class="modal" id="new-player">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
-                <div class="center-items">
+                <form action="game.html" id="new-player-form" method="POST" onsubmit="event.preventDefault(); addPlayerValidation();">
+                        <div class="center-items">
 
-                    <label for="username">Username:</label>
-                    <input 
-                    type="text" 
-                    title="Minimum of 2 and maximum of 12 characthers. It must contain only letters, numbers and the following characthers: _ - ."
-                    pattern="[A-Za-z0-9_-.]{2,12}"
-                    id="username" 
-                    name="username" 
-                    placeholder="Player Name" 
-                    autofocus 
-                    required >
+                            <label for="username">Name:</label>
+                            <!--ADD AGAIN FOLLOWING VALIDATION 
+                                pattern="[A-Za-z0-9_-]{2,12}" -->
+                            <input 
+                            type="text" 
+                            title="Minimum of 2 and maximum of 12 characthers. It must contain only letters, numbers and the following characthers: _ -"
+                            
+                            id="username" 
+                            name="username" 
+                            placeholder="Player Name" 
+                            autofocus 
+                            >
 
-                    <label for="initial-score">Initial Score:</label>
-                    <input 
-                    type="number" 
-                    min="-10000" 
-                    max="10000" 
-                    id="initial-score" 
-                    name="initialScore" 
-                    placeholder="000">
+                            <label for="initial-score">Initial Score:</label>
 
-                    <button type="submit" class="btn btn-rectangular" id="add-player" data-type="addPlayer">Add player</button>
-                </div>  
+                            <!--ADD AGAIN FOLLOWING VALIDATION 
+                            min="-10000"
+                            max="10000" -->
+                            <input 
+                            type="number" 
+                            
+                            id="initial-score" 
+                            name="initialScore" 
+                            placeholder="000">
+
+                            <div id="error-msg"></div>
+
+                            <button type="submit" class="btn btn-rectangular" id="add-player" data-type="addPlayer">Add player</button>
+                        </div>  
+                    </form>
             </div>
         </div>
         <!-- end of Add player modal-->

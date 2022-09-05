@@ -226,6 +226,12 @@ header {
     color: var(--secondary-color);
 }
 
+#error-msg {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
 
 /* footer */
 
