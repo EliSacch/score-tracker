@@ -4,6 +4,7 @@
  * Script to run when page loads.
  */
 document.addEventListener("DOMContentLoaded", function() {
+    displayPlayers();
     toggleEmptyDivPlaceholder();
     listenDeleteButton();
 
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 });
+
 
 /* INITIALIZE LOCAL STORAGE */
 
@@ -111,13 +113,14 @@ function addPlayer() {
     let existingPlayers = JSON.parse(playersArray);
     let newPlayer = {
         name: addPlayerName,
-        initialScore: initialScore
+        score: initialScore
     };
 
     existingPlayers.push(newPlayer);
     localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
 
-    /*here i need to add function to reload players list on screens*/
+    /*here I call the function to show the players on screen*/
+    displayPlayers();
     
 }
 
@@ -128,24 +131,37 @@ function addPlayer() {
 function displayPlayers() {
     let existingPlayers = JSON.parse(playersArray);
     let displayArea = document.getElementById('players');
-    for(let player of existingPlayers) {
-       let username = player.name;
-   
-       let newDiv = document.createElement('div');
-       newDiv.classList.add("display-inline");
-       newDiv.innerHTML = `
-       <div class="display-name">${username}</div>
-       <div class="add-points display-inline">
-           <input type="number">
-           <button>+</button>
-       </div>
-       `;
-
-       displayArea.appendChild(newDiv);
+    let scoreArea = document.getElementById('score-area');
+    if(existingPlayers!=null) {
+        for(let player of existingPlayers) {
+            let username = player.name;
+            let score = player.score;
+     
+            //create HTML for the players areas
+            let newDiv = document.createElement('div');
+            newDiv.classList.add("display-inline");
+            newDiv.innerHTML = `
+            <div class="display-name">${username}</div>
+            <div class="add-points display-inline">
+                <input type="number">
+                <button>+</button>
+            </div>
+            `;
+            displayArea.appendChild(newDiv);
+     
+            //create HTML for the scores area
+            let scoreDiv = document.createElement('div');
+            scoreDiv.classList.add("display-inline");
+            scoreDiv.innerHTML = `
+            <div class="display-name">${username}:</div>
+            <div>${score}</div>
+            `;
+            scoreArea.appendChild(scoreDiv);
+         }
     }
+    
 }
 
-displayPlayers();
 /**
  * Remove Player From Players div and show placeholder if div is empty.
  */

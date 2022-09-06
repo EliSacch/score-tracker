@@ -38,8 +38,8 @@ body {
 }
 
 .content {
-    width:90%;
-    max-width: 800px;
+    width: fit-content;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -173,6 +173,12 @@ header {
 .title {
     margin: 20px 0;
 }
+
+/*players section*/
+#players {
+width: 100%;
+}
+
 #players > div {
     height: fit-content;
     color: var(--dark-color);
@@ -235,6 +241,19 @@ header {
 #players button:focus {
     --color: var(--neutral-color);
     box-shadow: 0 0 0 3px var(--color);
+}
+
+/*score area*/
+
+#score-area {
+    font-size: 1.3rem;
+    width: 100%;
+}
+
+#score-area .display-name {
+    width: 120px;
+    text-align: left;
+    padding: 0 20px;
 }
 
 /* modals*/
@@ -311,6 +330,7 @@ header {
 
 footer {
     padding: 10px;
+    margin-top: 50px;
 }
 
 footer > ul {
