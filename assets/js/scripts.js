@@ -38,11 +38,9 @@ if(playersArray === null) {
 } 
 
 
-
 /* ACTION SPECIFIC FUNCTION */
 
 /* TOOGLE MODAL*/
-
 function openAddPlayer() {
     let modal = document.getElementById('new-player');
     modal.style.display = "block";
@@ -53,7 +51,6 @@ function hideParent(parent) {
 }
 
 /* TOGGLE PLACEHOLDER */
-
 let playersList = document.getElementById('players');
 
 /**
@@ -72,7 +69,6 @@ function toggleEmptyDivPlaceholder() {
         }
     }
 }
-
 
 /* ADD PLAYER FUNCTIONS */
 
@@ -107,7 +103,7 @@ function addPlayerValidation() {
 
 let playersN = 0;
 /**
- * This functions adds a new line for each player added.
+ * This functions adds a new player to local storage.
  */
 function addPlayer() { 
     let addPlayerName = document.getElementById('username').value;
@@ -122,9 +118,34 @@ function addPlayer() {
     localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
 
     /*here i need to add function to reload players list on screens*/
+    
 }
 
 
+/**
+ * This function create the player div to display in players section
+ */
+function displayPlayers() {
+    let existingPlayers = JSON.parse(playersArray);
+    let displayArea = document.getElementById('players');
+    for(let player of existingPlayers) {
+       let username = player.name;
+   
+       let newDiv = document.createElement('div');
+       newDiv.classList.add("display-inline");
+       newDiv.innerHTML = `
+       <div class="display-name">${username}</div>
+       <div class="add-points display-inline">
+           <input type="number">
+           <button>+</button>
+       </div>
+       `;
+
+       displayArea.appendChild(newDiv);
+    }
+}
+
+displayPlayers();
 /**
  * Remove Player From Players div and show placeholder if div is empty.
  */
@@ -132,5 +153,4 @@ function removeParent() {
     this.parentNode.remove();
     toggleEmptyDivPlaceholder();
 }
-
 

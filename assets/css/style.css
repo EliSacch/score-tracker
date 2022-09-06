@@ -55,6 +55,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    align-items: center;
 }
 
 .full-height {
@@ -162,6 +163,79 @@ header {
     font-size: 5em;
 }
 
+.display-area {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 20px 0;
+}
+#players > div {
+    height: fit-content;
+    color: var(--dark-color);
+    margin: 2px 0;
+}
+
+#players > div div:first-child {
+    width: 100px;
+    height: 100%;
+    line-height: 30px;
+    text-align: right;
+    border: 1px solid var(--dark-color);
+    border-radius: 3px;
+    padding: 0 20px;
+    color: var(--dark-color);
+    background-color: var(--primary-color);
+}
+
+#players > div:nth-child(odd) div:first-child {
+    background-color: var(--secondary-color);
+}
+
+.display-area input {
+    --color: var(--primary-color);
+    margin: 2px 0;
+    width: 100px;
+    background-color: transparent;
+    border: 1px solid var(--color);
+    border-radius: 3px;
+    padding: .4em;
+    color:var(--primary-color);
+}
+
+.display-area div:nth-child(odd) input[type="number"],
+.display-area div:nth-child(odd) .display-name {
+    --color: var(--secondary-color);
+    color: var(--color);
+}
+
+.display-area input:hover,
+.display-area input:focus {
+    box-shadow: 0 0 5px 1px;
+}
+
+#players button {
+    background-color: var(--dark-color);
+    width: 20px;
+    height: 20px;
+    --color: white;
+    border: 1px solid var(--color);
+    box-shadow: 
+    0 0 0 4px var(--dark-color),
+    0 0 0 5px var(--color)
+    ;
+    border-radius: 50%;
+    color: var(--neutral-color);
+}
+
+#players button:hover,
+#players button:focus {
+    --color: var(--neutral-color);
+    box-shadow: 0 0 0 3px var(--color);
+}
 
 /* modals*/
 #new-player {
