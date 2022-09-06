@@ -47,26 +47,23 @@
                         <div class="center-items">
 
                             <label for="username">Name:</label>
-                            <!--ADD AGAIN FOLLOWING VALIDATION 
-                                pattern="[A-Za-z0-9_-]{2,12}" -->
+
                             <input 
                             type="text" 
                             title="Minimum of 2 and maximum of 12 characthers. It must contain only letters, numbers and the following characthers: _ -"
-                            
+                            pattern="[A-Za-z0-9_-]{2,12}"
                             id="username" 
                             name="username" 
                             placeholder="Player Name" 
                             autofocus 
-                            >
+                            required>
 
                             <label for="initial-score">Initial Score:</label>
 
-                            <!--ADD AGAIN FOLLOWING VALIDATION 
-                            min="-10000"
-                            max="10000" -->
                             <input 
                             type="number" 
-                            
+                            min="-10000"
+                            max="10000"
                             id="initial-score" 
                             name="initialScore" 
                             placeholder="000">

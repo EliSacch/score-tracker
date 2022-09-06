@@ -30,15 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /* INITIALIZE LOCAL STORAGE */
-let playersCount = localStorage.getItem('playersCount');
-if(playersCount === null) {
-    window.localStorage.setItem('playersCount', 0); 
-} 
 
 let playersArray = localStorage.getItem('playersArray');
+let emptyArray = new Array();
 if(playersArray === null) {
-    window.localStorage.setItem('playersArray', []); 
+    localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
 } 
+
 
 
 /* ACTION SPECIFIC FUNCTION */
@@ -112,9 +110,20 @@ let playersN = 0;
  * This functions adds a new line for each player added.
  */
 function addPlayer() { 
-    
-    alert('new player');
+    let addPlayerName = document.getElementById('username').value;
+    let initialScore = document.getElementById('initial-score').value;
+    let existingPlayers = JSON.parse(playersArray);
+    let newPlayer = {
+        name: addPlayerName,
+        initialScore: initialScore
+    };
+
+    existingPlayers.push(newPlayer);
+    localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
+
+    /*here i need to add function to reload players list on screens*/
 }
+
 
 /**
  * Remove Player From Players div and show placeholder if div is empty.
@@ -123,12 +132,5 @@ function removeParent() {
     this.parentNode.remove();
     toggleEmptyDivPlaceholder();
 }
-
-
-
-
-
-
-
 
 
