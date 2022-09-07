@@ -163,7 +163,12 @@ To test my website I have opened it on different devices, to see if it was worki
   - Errors found when passing the final version through the official [Jshint validator](https://jshint.com/)
 
 ### Fixed Bugs
+- Remove players function:
+  - Task: When I added the function to remove one player from the local storage, I added the function to display the payers again, so that it would read the updated local storage and the display area accordingly.
+  - Bug: Instead of removing the corresponding div from the display area it duplicated it, showing two divs for the same player.
+  - Fix: Instead of calling the function __displayPlayers()__ I added a function to reload the page so that the program can read the updated local storage.
 
+  ![Mobile - home page](media/remove-players-from-localstorage-error.png)
 
 
 ### Unfixed Bugs

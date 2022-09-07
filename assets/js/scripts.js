@@ -110,6 +110,9 @@ let playersN = 0;
 function addPlayer() { 
     let addPlayerName = document.getElementById('username').value;
     let initialScore = document.getElementById('initial-score').value;
+    if(!initialScore) {
+        initialScore = 0;
+    }
     let existingPlayers = JSON.parse(playersArray);
     let newPlayer = {
         name: addPlayerName,
@@ -121,7 +124,6 @@ function addPlayer() {
 
     /*here I call the function to show the players on screen*/
     displayPlayers();
-    
 }
 
 
@@ -136,11 +138,13 @@ function displayPlayers() {
         for(let player of existingPlayers) {
             let username = player.name;
             let score = player.score;
-     
+            let playerPosition = existingPlayers.indexOf(player);
+
             //create HTML for the players areas
             let newDiv = document.createElement('div');
             newDiv.classList.add("display-inline");
             newDiv.innerHTML = `
+            <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
             <div class="display-name">${username}</div>
             <div class="add-points display-inline">
                 <input type="number">
@@ -161,6 +165,19 @@ function displayPlayers() {
     }
     
 }
+
+
+function removePlayer(position) {
+    let existingPlayers = JSON.parse(playersArray);
+    if(existingPlayers[position]) {
+        existingPlayers.splice(position, 1);
+        localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
+        location.reload();
+    } else {
+        throw `there is no player in position: ${position}`;
+    }
+}
+
 
 /**
  * Remove Player From Players div and show placeholder if div is empty.

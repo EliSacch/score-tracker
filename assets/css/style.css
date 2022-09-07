@@ -170,6 +170,12 @@ header {
     flex-direction: column;
 }
 
+.btn-remove {
+    background-color: transparent;
+    border: none;
+    font-size: 1em;
+    color: var(--neutral-color);
+}
 .title {
     margin: 20px 0;
 }
@@ -185,7 +191,7 @@ width: 100%;
     margin: 2px 0;
 }
 
-#players > div div:first-child {
+#players > div div:nth-child(2) {
     width: 100px;
     height: 100%;
     line-height: 30px;
@@ -197,7 +203,7 @@ width: 100%;
     background-color: var(--primary-color);
 }
 
-#players > div:nth-child(odd) div:first-child {
+#players > div:nth-child(odd) div:nth-child(2) {
     background-color: var(--secondary-color);
 }
 
@@ -212,8 +218,8 @@ width: 100%;
     color:var(--primary-color);
 }
 
-.display-area div:nth-child(odd) input[type="number"],
-.display-area div:nth-child(odd) .display-name {
+.display-area > div:nth-child(odd) input[type="number"],
+.display-area > div:nth-child(odd) .display-name {
     --color: var(--secondary-color);
     color: var(--color);
 }
@@ -223,7 +229,7 @@ width: 100%;
     box-shadow: 0 0 5px 1px;
 }
 
-#players button {
+#players input + button {
     background-color: var(--dark-color);
     width: 20px;
     height: 20px;
@@ -237,8 +243,8 @@ width: 100%;
     color: var(--neutral-color);
 }
 
-#players button:hover,
-#players button:focus {
+#players  input + button:hover,
+#players  input + button:focus {
     --color: var(--neutral-color);
     box-shadow: 0 0 0 3px var(--color);
 }
@@ -314,6 +320,8 @@ width: 100%;
     font-size: 1em;
 }
 
+.btn-remove:hover,
+.btn-remove:focus,
 .btn-close:hover,
 .btn-close:focus {
     color: var(--secondary-color);
