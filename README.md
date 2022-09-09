@@ -237,9 +237,12 @@ The live link can be found here - [Live Website]()
 
 ### Code
 
-The code for adding an event listener using data-type was taken from the [Code Institute course](https://codeinstitute.net/global/)
-
+- The code for adding an event listener using data-type was taken from the [Code Institute course](https://codeinstitute.net/global/)
 Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event Listeners.
+
+- To prevent the possibility to add __e__ and __+__ as values into the add pointa input, I checked this page in [stackoverflow](https://stackoverflow.com/questions/39291997/how-to-block-e-in-input-type-number) but changing the code to adapt it to my needs.
+
+
 
 ### Content
 

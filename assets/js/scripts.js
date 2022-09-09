@@ -178,7 +178,6 @@ function displayPlayers() {
             scoreArea.appendChild(scoreDiv);
 
             }
-
             preventE();
          }
     }
@@ -200,8 +199,9 @@ function updateScore(position) {
                     errorMsg.innerHTML = "Value out of range. Min -10000, Max 10000";
                     throw `Value out of range minmax`;
                 } else {
-                    //let score = Number.parseFloat(existingPlayers[position].score);
-                    existingPlayers[position].score += Number.parseFloat(points);
+                    let score = Number.parseFloat(existingPlayers[position].score);
+                    score += Number.parseFloat(points);
+                    existingPlayers[position].score = score.toFixed(2);
                     localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
                     location.reload();
                 }
