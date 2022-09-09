@@ -16,7 +16,7 @@
 <body class="full-height">
 
     <header>
-        <div class="small-logo">Score<b>TRACKER</b></div>
+        <div class="small-logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
         <div class="menu">
             <ul class="display-inline">
                 <li><button class="btn menu-button" data-type="openAddPlayer"><i class="fas fa-user-plus"></i></button></li>
@@ -88,8 +88,7 @@
                 <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
 
                 <button class="btn btn-rectangular" data-type="newGame">New Game</button>
-                <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>
-                
+                <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>             
             </div>
         </div>
         <!-- end of Options modal-->
@@ -98,8 +97,16 @@
 
     
     <footer class="center-items">
+        <div class="modal" id="share">
+            <div class="modal-action-area center-items">
+                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+
+                <p>copy link</p> 
+                <p>Share via whatsapp</p>    
+            </div>
+        </div>
         <ul class="display-inline">
-            <li><a href="#"><i class="fas fa-share-alt"></i></a></li>
+            <li><button class="btn menu-button" data-type="openShare"><i class="fas fa-share-alt"></i></button></li>
             <li><a href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li>
             <li><a href="https://www.linkedin.com/" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
         </ul>

@@ -3,17 +3,17 @@
 /**
  * Script to run when page loads.
  */
-document.addEventListener("DOMContentLoaded", function() {
-    displayPlayers();
-    toggleEmptyDivPlaceholder();
-
+document.addEventListener("DOMContentLoaded", function() {  
     /* The following code was taken from the Code Institute course content.*/
     let buttons = document.getElementsByTagName('button');
     for(let button of buttons ) {
         button.addEventListener("click", function() {
             let buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
-            switch (buttonAction) {
+            switch (buttonAction) {   
+                case "openShare":
+                    openShare();
+                    break;  
                 case "openAddPlayer":
                     openAddPlayer();
                     break;
@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
+
+    displayPlayers();
+    toggleEmptyDivPlaceholder();
 });
 
 
@@ -54,6 +57,10 @@ if(globalInitialScore === null) {
 
 /* ACTION SPECIFIC FUNCTION */
 
+function openShare() {
+    let modal = document.getElementById('share');
+    modal.style.display = "block";
+}
 /** This function opens the new player modal */
 function openAddPlayer() {
     let modal = document.getElementById('new-player');
@@ -192,7 +199,7 @@ function displayPlayers() {
             newDiv.innerHTML = `
             <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
             <div class="display-name">${username}</div>
-            <div class="display-inline">
+            <div class="display-inline player-line">
                 <input class="restrict-input"
                 type="number" 
                 min="-10000" 
@@ -208,8 +215,9 @@ function displayPlayers() {
             let scoreDiv = document.createElement('div');
             scoreDiv.classList.add("display-inline");
             scoreDiv.innerHTML = `
+            
             <div class="display-name">${username}:</div>
-            <div>${score}</div>
+            <div class="player-line">${score}</div>
             `;
             scoreArea.appendChild(scoreDiv);
 

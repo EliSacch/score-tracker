@@ -28,6 +28,23 @@
     outline: none;
 }
 
+* a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 body {
     background-color: var(--dark-color);
     height: 100vh;
@@ -66,7 +83,7 @@ body {
 .btn {
     background-color: transparent;
     color: inherit;
-    font-size: .6em;
+    font-size: 2rem;
 }
 
 
@@ -192,7 +209,7 @@ width: 100%;
 }
 
 #players > div div:nth-child(2) {
-    width: 100px;
+    width: 100%;
     height: 100%;
     line-height: 30px;
     text-align: right;
@@ -207,9 +224,14 @@ width: 100%;
     background-color: var(--secondary-color);
 }
 
+.player-line {
+    margin-left:auto;
+}
+
 .display-area input {
     --color: var(--primary-color);
     margin: 2px 0;
+    margin-right: 0;
     width: 100px;
     background-color: transparent;
     border: 1px solid var(--color);
@@ -264,7 +286,8 @@ width: 100%;
 
 /* modals*/
 #new-player,
-#options {
+#options,
+#share {
     display: none;
 }
 .modal::after {
@@ -314,6 +337,10 @@ width: 100%;
     box-shadow: 0 0 5px 1px;
 }
 
+.modal .btn {
+font-size: 1.2rem;
+}
+
 .btn-close {
     position: absolute;
     top: 10px;
@@ -345,14 +372,9 @@ footer {
 
 footer > ul {
     list-style: none;
-    font-size: .6em;
+    font-size: 2rem;
 }
 
-
-li > a {
-    text-decoration: none;
-    color: inherit;
-}
 
 li a:hover > i,
 li a:focus > i {
