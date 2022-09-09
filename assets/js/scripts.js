@@ -6,7 +6,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     displayPlayers();
     toggleEmptyDivPlaceholder();
-    listenDeleteButton();
 
     /* The following code was taken from the Code Institute course content.*/
     let buttons = document.getElementsByTagName('button');
@@ -93,16 +92,6 @@ function addPlayerValidation() {
     }
 }
 
-/**
- * Add event listener to detele player buttons.
- * */
- function listenDeleteButton() {
-    let deletePlayers = document.getElementsByClassName('xx');
-    for(let deletePlayer of deletePlayers) {
-        deletePlayer.addEventListener("click", removeIt);
-    }
-}
-
 let playersN = 0;
 /**
  * This functions adds a new player to local storage.
@@ -139,16 +128,16 @@ function displayPlayers() {
             let username = player.name;
             let score = player.score;
             let playerPosition = existingPlayers.indexOf(player);
-
+        
             //create HTML for the players areas
             let newDiv = document.createElement('div');
             newDiv.classList.add("display-inline");
             newDiv.innerHTML = `
             <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
             <div class="display-name">${username}</div>
-            <div class="add-points display-inline">
-                <input type="number">
-                <button>+</button>
+            <div class=" display-inline">
+                <input type="number" id="points${playerPosition}">
+                <button class="add-points" onclick="updateScore(${playerPosition})">+</button>
             </div>
             `;
             displayArea.appendChild(newDiv);
@@ -163,10 +152,28 @@ function displayPlayers() {
             scoreArea.appendChild(scoreDiv);
          }
     }
-    
+}
+
+/**
+ * This function updates the player's score and then reloads page to update display area
+ */
+function updateScore(position) {
+    let existingPlayers = JSON.parse(playersArray);
+    if(existingPlayers[position]) {
+        let points = document.getElementById(`points${position}`).value;
+        existingPlayers[position].score += parseInt(points);
+        console.log(existingPlayers);
+        localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
+        location.reload();
+    } else {
+        throw `There is no player in position ${position}`;
+    }
 }
 
 
+/**
+ * This function removed players from local storage and then reloads page to update display area
+ */
 function removePlayer(position) {
     let existingPlayers = JSON.parse(playersArray);
     if(existingPlayers[position]) {
@@ -174,7 +181,7 @@ function removePlayer(position) {
         localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
         location.reload();
     } else {
-        throw `there is no player in position: ${position}`;
+        throw `There is no player in position: ${position}`;
     }
 }
 
