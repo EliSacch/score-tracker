@@ -1,11 +1,11 @@
 # Score TRACKER
-A web application to track any game score
+A web application inspired by darts, but that can be used to track any game score.
 
 Have you ever played darts with your friends (or any other game), without having the tool to track your scores? Did you find yourself trying to keep track of the score in the retro of an old receipt or on the "Notes" application of your phone?
 
 Score TRACKER is the solution.
 
-A simple and intiuitive navigation, to use for your games.
+A simple and intiuitive design, easy to use for your games.
 
 ![Responsice Mockup]()
 
@@ -15,7 +15,7 @@ A simple and intiuitive navigation, to use for your games.
 
 - [Design and User Experience](#design-and-user-experience)
   - [Design](#design)
-  - [User Experience](#user-experience)
+  - [User Stories](#user-stories)
   - [Wireframes](#wireframes)
 
 - [Features](#features)
@@ -68,8 +68,8 @@ The design is based on the "Darts" game, which inspired this webpage.
 ### User Stories
 
 - As website owner I want:
-    - To have an engaging design to cathc the users attention
-    - That users are prompt to share the website with their friends
+    - To have an engaging design to catch the users attention.
+    - That users are prompt to share the website with their friends.
 
 - As a user I want:
     - To easily understand the purpose of the website.
@@ -163,13 +163,25 @@ To test my website I have opened it on different devices, to see if it was worki
   - Errors found when passing the final version through the official [Jshint validator](https://jshint.com/)
 
 ### Fixed Bugs
-- Remove players function:
-  - Task: When I added the function to remove one player from the local storage, I added the function to display the payers again, so that it would read the updated local storage and the display area accordingly.
-  - Bug: Instead of removing the corresponding div from the display area it duplicated it, showing two divs for the same player.
+- Remove Players function:
+  - First Bug: When I added the function to remove one player from the local storage, I added the function to display the payers again, so that it would read the updated local storage and the display area accordingly.
+  Instead of removing the corresponding div from the display area it duplicated it, showing two divs for the same player.
   - Fix: Instead of calling the function __displayPlayers()__ I added a function to reload the page so that the program can read the updated local storage.
 
-  ![Mobile - home page](media/remove-players-from-localstorage-error.png)
+  ![Remove Players Error](media/remove-players-from-localstorage-error.png)
 
+- Update Score function:
+  - Bug: This function takes the value from input of type "number". This input allows also the value '__e__' and it caused the score to be updated to '__null__'. This also breaks the function, since we cannot add or remove any value from 'null'.
+  ![Input Value Error 1](media/points-value-e-error.png)
+  - Fix: I implemented a validation that prevents the value 'e' to be entered. 
+
+  ![Input Value Fix 1](media/points-value-e-fix.png)
+
+
+  - Second Bug: The input also allowed to enter multiple plus and minus signs, causing the following walue to be returned: "__NaN__".
+  ![Input Value Error 2](media/points-value-nan-error.png)
+  - Fix: For the second issue I have implemented a validation (.isNaN()) to check if the value converted to float returns NaN or a valid number.
+   ![Input Value Fix 2](media/points-value-nan-fix.png)
 
 ### Unfixed Bugs
 

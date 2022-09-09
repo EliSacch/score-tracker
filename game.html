@@ -30,6 +30,7 @@
             <div class="empty">
                 <p>Add one player to start</p>
             </div>
+            <div id="error-msg"></div>
         <p class="title">Players:</p>
             <!-- Placeholder for when there are no players added-->
             <div class="empty"><i class="fas fa-ban"></i></div>
@@ -67,11 +68,12 @@
                             type="number" 
                             min="-10000"
                             max="10000"
+                            pattern="([-])+([0-9]{0,4})+([.0-9]{0,3})"
                             id="initial-score" 
                             name="initialScore" 
                             placeholder="000">
 
-                            <div id="error-msg"></div>
+                            <div id="modal-error-msg"></div>
 
                             <button type="submit" class="btn btn-rectangular" id="add-player" data-type="addPlayer">Add player</button>
                         </div>  

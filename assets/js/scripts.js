@@ -75,7 +75,7 @@ function toggleEmptyDivPlaceholder() {
 
 /* Form Validation */
 function addPlayerValidation() {
-    let errorMsg = document.getElementById('error-msg');
+    let errorMsg = document.getElementById('modal-error-msg');
     let addPlayerName = document.getElementById('username').value;
     let initialScore = document.getElementById('initial-score').value;
     let newPlayerForm = document.getElementById('new-player-form');
@@ -91,6 +91,27 @@ function addPlayerValidation() {
         newPlayerForm.submit();
     }
 }
+
+/**
+ * This function prevents the possibility to enter e and + in number input
+ */
+function preventE() {
+/*Code from stackoverflow*/
+    let inputNumber = document.getElementsByClassName("restrict-input");
+    for(let inputs of inputNumber) {
+        inputs.addEventListener("keypress", function (evt) {
+            let invalidChars = [
+                "+",
+                "e",
+              ];
+              if (invalidChars.includes(evt.key)) {
+                evt.preventDefault();
+              }
+        });
+    }
+    /*End of code from stackoverfow*/
+}
+
 
 let playersN = 0;
 /**
@@ -135,8 +156,13 @@ function displayPlayers() {
             newDiv.innerHTML = `
             <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
             <div class="display-name">${username}</div>
-            <div class=" display-inline">
-                <input type="number" id="points${playerPosition}">
+            <div class="display-inline">
+                <input class="restrict-input"
+                type="number" 
+                min="-10000" 
+                max="10000"
+                pattern="([-])+([0-9]{0,4})+([.0-9]{0,3})"
+                id="points${playerPosition}">
                 <button class="add-points" onclick="updateScore(${playerPosition})">+</button>
             </div>
             `;
@@ -150,21 +176,36 @@ function displayPlayers() {
             <div>${score}</div>
             `;
             scoreArea.appendChild(scoreDiv);
+
+            }
+
+            preventE();
          }
     }
-}
 
 /**
  * This function updates the player's score and then reloads page to update display area
  */
 function updateScore(position) {
+    let errorMsg = document.getElementById('error-msg');
     let existingPlayers = JSON.parse(playersArray);
     if(existingPlayers[position]) {
+        
         let points = document.getElementById(`points${position}`).value;
-        existingPlayers[position].score += parseInt(points);
-        console.log(existingPlayers);
-        localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
-        location.reload();
+            if(isNaN(parseFloat(points))) {
+                errorMsg.innerHTML = "Invalid value";
+                throw `Invalid value euntered`;
+            } else {
+                if(points < -10000 || points > 10000) {
+                    errorMsg.innerHTML = "Value out of range. Min -10000, Max 10000";
+                    throw `Value out of range minmax`;
+                } else {
+                    //let score = Number.parseFloat(existingPlayers[position].score);
+                    existingPlayers[position].score += Number.parseFloat(points);
+                    localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
+                    location.reload();
+                }
+            }
     } else {
         throw `There is no player in position ${position}`;
     }
