@@ -263,7 +263,8 @@ width: 100%;
 }
 
 /* modals*/
-#new-player {
+#new-player,
+#options {
     display: none;
 }
 .modal::after {

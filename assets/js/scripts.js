@@ -10,20 +10,30 @@ document.addEventListener("DOMContentLoaded", function() {
     /* The following code was taken from the Code Institute course content.*/
     let buttons = document.getElementsByTagName('button');
     for(let button of buttons ) {
-
         button.addEventListener("click", function() {
             let buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
             switch (buttonAction) {
                 case "openAddPlayer":
-                openAddPlayer();
-                break;
+                    openAddPlayer();
+                    break;
+                case "openOptions":
+                    openOptions();
+                    break;
                 case "hideParent":
-                hideParent(button.parentNode.parentNode);
-                break;
-                case addPlayer:
-                addPlayerValidation();
-                break;
+                    hideParent(button.parentNode.parentNode);
+                    break;
+                case "addPlayer":
+                    addPlayerValidation();
+                    break;
+                case "newGame":
+                    newGame();
+                    break;
+                case "resetScore":
+                    resetScore();
+                    break;
+                default:
+                    throw `Action ${buttonAction} not recognized`;
             }
         })
     }
@@ -31,24 +41,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /* INITIALIZE LOCAL STORAGE */
-
 let playersArray = localStorage.getItem('playersArray');
 let emptyArray = new Array();
 if(playersArray === null) {
     localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
-} 
+}
 
+let globalInitialScore = localStorage.getItem('globalInitialScore');
+if(globalInitialScore === null) {
+    localStorage.setItem('globalInitialScore', 0); 
+}
 
 /* ACTION SPECIFIC FUNCTION */
 
-/* TOOGLE MODAL*/
+/** This function opens the new player modal */
 function openAddPlayer() {
     let modal = document.getElementById('new-player');
     modal.style.display = "block";
 }
 
+/** This function opens the options modal */
+function openOptions() {
+    let modal = document.getElementById('options');
+    modal.style.display = "block";
+}
+
+/** this function closes the modal*/
 function hideParent(parent) {
     parent.style.display = "none";
+}
+
+/** This function removes all players from the game */
+function newGame() {
+    localStorage.setItem('playersArray', JSON.stringify(emptyArray));
+    location.reload();
+}
+
+/** This function set the score for all players to 0 */
+function resetScore() {
+    let existingPlayers = JSON.parse(playersArray);
+    for(let player of existingPlayers) {
+        player.score = 0;
+        localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
+        location.reload();
+    }
 }
 
 /* TOGGLE PLACEHOLDER */
@@ -225,13 +261,3 @@ function removePlayer(position) {
         throw `There is no player in position: ${position}`;
     }
 }
-
-
-/**
- * Remove Player From Players div and show placeholder if div is empty.
- */
-function removeParent() {
-    this.parentNode.remove();
-    toggleEmptyDivPlaceholder();
-}
-
