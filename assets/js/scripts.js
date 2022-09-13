@@ -53,6 +53,11 @@ if(globalInitialScore === null) {
 }
 
 /* ACTION SPECIFIC FUNCTION */
+/** This function opens the new game modal */
+function openNewGame() {
+    let modal = document.getElementById('new-game-modal');
+    modal.style.display = "block";
+}
 
 /** This function opens the new player modal */
 function openAddPlayer() {

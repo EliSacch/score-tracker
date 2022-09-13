@@ -73,6 +73,8 @@ body {
     flex-direction: row;
     gap: 1em;
     align-items: center;
+    justify-content: center;
+    height: auto;
 }
 
 .full-height {
@@ -304,11 +306,17 @@ width: 100%;
     color: var(--dark-color);
 }
 
+
 /* modals*/
 #new-player,
-#options {
+#options{
     display: none;
 }
+
+.modal form {
+    padding: 1em;
+}
+
 .modal::after {
     content: "";
     position: absolute;
@@ -328,7 +336,7 @@ width: 100%;
     transform: translateY(-50%) translateX(-50%);
 
     font-size: 1.5rem;
-    height: 50%;
+    min-height: 50%;
     width: 90%;
     max-width: 400px;
     margin: 0 auto;
@@ -379,6 +387,52 @@ font-size: 1.2rem;
     color: var(--secondary-color);
     font-size: 1rem;
     margin-bottom: 1rem;
+}
+
+input[name=limit]:disabled,
+label[for=limit] + input[name=limit]:disabled{
+    display: none;
+}
+.darts-checkbox {
+    margin: 1em;
+}
+
+.darts-checkbox input{
+    margin: 0;
+    padding: 0;
+}
+
+#darts-mode {
+    appearance: none;
+    display: block;
+    background-color: inherit;
+    width: 3em;
+    height: 1.5em;
+    border-radius: 100000000px;
+    border: 1px solid var(--neutral-color);
+    align-self: center;
+    position: relative;
+}
+
+#darts-mode::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--neutral-color);
+    opacity: .7;
+}
+
+#darts-mode:checked {
+    background-color: var(--primary-color);
+}
+
+#darts-mode:checked::before {
+    right: 0;
+    background-color: var(--neutral-color);
+    opacity: 1;
 }
 
 

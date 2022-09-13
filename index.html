@@ -23,10 +23,58 @@
         <div id="logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
 
         <div class="actions center-items">
-            <button id="new-game" class="btn btn-rectangular" onclick="newGame(); location.href='game.html'">New Game</button>
+            <button id="new-game" class="btn btn-rectangular" onclick="openNewGame()">New Game</button>
             <button class="btn btn-rectangular secondary-color" onclick="location.href='game.html'">Resume</button>
         </div> 
     </div>
+
+            <!-- Beginning of New Game Modal-->
+            <div class="modal" id="new-game-modal">
+                <div class="modal-action-area center-items">
+                    <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                    
+                    <form action="game.html" id="new-player-form" method="POST" onsubmit="event.preventDefault(); addPlayerValidation();">
+                        <div class="center-items">
+
+                            <div class="darts-checkbox display-inline">
+                                <label for="darts-mode">Darts Mode</label>
+                                <input type="checkbox" name="dartsMode" id="darts-mode" checked>
+                            </div>
+
+                            <label for="set-initial-score">Initial Score:</label>
+
+                            <input 
+                            type="number" 
+                            min="-10000"
+                            max="10000"
+                            pattern="([-])+([0-9]{0,4})"
+                            id="set-initial-score" 
+                            name="setInitialScore" 
+                            value='501'
+                            required>
+
+                            <div id="modal-error-msg"></div>
+
+                            <label for="limit">Limit:</label>
+
+                            <input 
+                            type="number" 
+                            min="-10000"
+                            max="10000"
+                            pattern="([-])+([0-9]{0,4})"
+                            id="limit" 
+                            name="limit" 
+                            value="0">
+
+                            <div id="modal-error-msg"></div>
+
+                            <button type="submit" class="btn btn-rectangular" data-type="newGame()">Start</button> 
+                        </div>  
+                    </form>
+                     
+                </div>
+            </div>
+            <!-- end of New Game modal-->
 
     <footer class="center-items">
         <ul class="display-inline">
