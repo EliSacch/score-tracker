@@ -33,7 +33,7 @@
                 <div class="modal-action-area center-items">
                     <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
                     
-                    <form action="game.html" id="new-game-form" method="POST" onsubmit="event.preventDefault();">
+                    <form action="game.html" id="new-game-form" method="POST" onsubmit="event.preventDefault(); addNewGameValidation()">
                         <div class="center-items">
 
                             <div id="darts-checkbox" class="display-inline">
@@ -52,9 +52,7 @@
                             class="restrict-input"
                             name="setInitialScore" 
                             value='501'
-                            required>
-
-                            <div id="modal-error-msg"></div>
+                            >
 
                             <label for="limit" id="limit-label">Limit:</label>
 
@@ -68,9 +66,9 @@
                             name="limit" 
                             value="0">
 
-                            <div id="modal-error-msg"></div>
+                            <div id="new-game-error-msg"></div>
 
-                            <button type="submit" class="btn btn-rectangular" data-type="newGame">Start</button> 
+                            <button type="submit" class="btn btn-rectangular" data-type="form">Start</button> 
                         </div>  
                     </form>
                      

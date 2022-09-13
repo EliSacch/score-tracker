@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             let buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
-            switch (buttonAction) {   
+            switch (buttonAction) { 
+                case "form":
+                    console.log('action handled via submit');  
                 case "openNewGame":
                     openNewGame();
                     break; 
@@ -28,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     break;
                 case "addPlayer":
                     addPlayerValidation();
-                    break;
-                case "newGame":
-                    newGame();
                     break;
                 case "resetScore":
                     resetScore();
@@ -130,7 +129,7 @@ function newGame() {
     localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
 
     //redirect to game page
-    location.href='game.html';
+    //location.href='game.html';
 }
 
 /** This function set the score for all players to 0 */
@@ -159,7 +158,6 @@ function toggleEmptyDivPlaceholder() {
         } else {
             for ( i = 0; i < placeholderEmpty.length; i++ ) {
                 placeholderEmpty[i].style.display = "none";
-                console.log(i);
             }
         }
     }      
@@ -167,12 +165,34 @@ function toggleEmptyDivPlaceholder() {
 
 /* ADD PLAYER FUNCTIONS */
 
-/* Form Validation */
+/* Form validation for new game*/
+function addNewGameValidation() {
+    let errorMsg = document.getElementById('new-game-error-msg');
+    let initialScore = document.getElementById('set-initial-score').value;
+    let limit = document.getElementById('limit').value;
+
+    let newGameForm = document.getElementById('new-game-form');
+        if(initialScore === "") {
+            errorMsg.innerHTML = "Please, enter the initial score";
+        } else if(
+            (limit != "" && 
+            isNaN(parseInt(limit))) ||
+            (isNaN(parseInt(initialScore)))
+            ) {
+            errorMsg.innerHTML = "Invalid value";
+            throw `Invalid value entered`;
+        }else {
+            newGame();
+            newGameForm.submit();
+        }
+} 
+
+/* Form validation for new player*/
 function addPlayerValidation() {
     let errorMsg = document.getElementById('modal-error-msg');
-    let addPlayerName = document.getElementById('username').value;
-    let initialScore = document.getElementById('initial-score').value;
-    let newPlayerForm = document.getElementById('new-player-form');
+        let addPlayerName = document.getElementById('username').value;
+        let initialScore = document.getElementById('initial-score').value;
+        let newPlayerForm = document.getElementById('new-player-form');
 
         if(addPlayerName === "") {
             errorMsg.innerHTML = "Please, enter a name.";
@@ -197,7 +217,8 @@ function preventE() {
             let invalidChars = [
                 "+",
                 "e",
-                "."
+                ".",
+                ","
               ];
               if (invalidChars.includes(evt.key)) {
                 evt.preventDefault();

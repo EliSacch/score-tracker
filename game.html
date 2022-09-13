@@ -72,14 +72,15 @@
                             type="number" 
                             min="-10000"
                             max="10000"
-                            pattern="([-])+([0-9]{0,4})+([.0-9]{0,3})"
+                            pattern="([-])+([0-9]{0,4})"
                             id="initial-score" 
+                            class="restrict-input"
                             name="initialScore" 
                             placeholder="000">
 
                             <div id="modal-error-msg"></div>
 
-                            <button type="submit" class="btn btn-rectangular" id="add-player" data-type="addPlayer">Add player</button>
+                            <button type="submit" class="btn btn-rectangular" id="add-player" data-type="form">Add player</button>
                         </div>  
                     </form>
             </div>
@@ -91,11 +92,59 @@
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
 
-                <button class="btn btn-rectangular" data-type="newGame">New Game</button>
+                <button class="btn btn-rectangular" data-type="openNewGame">New Game</button>
                 <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>             
             </div>
         </div>
         <!-- end of Options modal-->
+
+                    <!-- Beginning of New Game Modal-->
+                    <div class="modal" id="new-game-modal">
+                        <div class="modal-action-area center-items">
+                            <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                            
+                            <form action="game.html" id="new-game-form" method="POST" onsubmit="event.preventDefault(); addNewGameValidation()">
+                                <div class="center-items">
+        
+                                    <div id="darts-checkbox" class="display-inline">
+                                        <label for="darts-mode">Darts Mode</label>
+                                        <input type="checkbox" name="dartsMode" id="darts-mode" checked="true">
+                                    </div>
+        
+                                    <label for="set-initial-score">Initial Score:</label>
+        
+                                    <input 
+                                    type="number" 
+                                    min="-10000"
+                                    max="10000"
+                                    pattern="([-])+([0-9]{0,4})"
+                                    id="set-initial-score" 
+                                    class="restrict-input"
+                                    name="setInitialScore" 
+                                    value='501'
+                                    >
+        
+                                    <label for="limit" id="limit-label">Limit:</label>
+        
+                                    <input 
+                                    type="number" 
+                                    min="-10000"
+                                    max="10000"
+                                    pattern="([-])+([0-9]{0,4})"
+                                    id="limit" 
+                                    class="restrict-input"
+                                    name="limit" 
+                                    value="0">
+        
+                                    <div id="new-game-error-msg"></div>
+        
+                                    <button type="submit" class="btn btn-rectangular" data-type="form">Start</button> 
+                                </div>  
+                            </form>
+                             
+                        </div>
+                    </div>
+                    <!-- end of New Game modal-->
     </div>
 
     
