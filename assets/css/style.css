@@ -309,7 +309,8 @@ width: 100%;
 
 /* modals*/
 #new-player,
-#options{
+#options,
+#new-game-modal {
     display: none;
 }
 
@@ -389,15 +390,11 @@ font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
-input[name=limit]:disabled,
-label[for=limit] + input[name=limit]:disabled{
-    display: none;
-}
-.darts-checkbox {
+#darts-checkbox {
     margin: 1em;
 }
 
-.darts-checkbox input{
+#darts-checkbox input{
     margin: 0;
     padding: 0;
 }
@@ -412,6 +409,7 @@ label[for=limit] + input[name=limit]:disabled{
     border: 1px solid var(--neutral-color);
     align-self: center;
     position: relative;
+    transition: all 1s ease-in-out;
 }
 
 #darts-mode::before {
@@ -430,11 +428,15 @@ label[for=limit] + input[name=limit]:disabled{
 }
 
 #darts-mode:checked::before {
-    right: 0;
     background-color: var(--neutral-color);
     opacity: 1;
+    transform: translateX(101%);
+    transition: all .5s ease-in-out;
 }
 
+#darts-mode:not(:checked)::before {
+    transition: all .3s ease-in-out;
+}
 
 /* footer */
 
