@@ -284,10 +284,29 @@ width: 100%;
     padding: 0 20px;
 }
 
+/* finish game section*/
+#finish-game {
+    height: 100%;
+    display: flex;
+    align-items: flex-end; 
+}
+
+.finish {
+    font-size: 1.2rem;
+    padding: .5em;
+    border: 2px solid rgb(235, 57, 57);
+    border-radius: 3px;
+}
+
+.finish:hover,
+.finish:focus {
+    background-color: rgb(255, 0, 30);
+    color: var(--dark-color);
+}
+
 /* modals*/
 #new-player,
-#options,
-#share {
+#options {
     display: none;
 }
 .modal::after {

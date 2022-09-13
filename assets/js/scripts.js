@@ -10,10 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
             let buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
-            switch (buttonAction) {   
-                case "openShare":
-                    openShare();
-                    break;  
+            switch (buttonAction) {    
                 case "openAddPlayer":
                     openAddPlayer();
                     break;
@@ -57,10 +54,6 @@ if(globalInitialScore === null) {
 
 /* ACTION SPECIFIC FUNCTION */
 
-function openShare() {
-    let modal = document.getElementById('share');
-    modal.style.display = "block";
-}
 /** This function opens the new player modal */
 function openAddPlayer() {
     let modal = document.getElementById('new-player');
@@ -146,6 +139,7 @@ function preventE() {
             let invalidChars = [
                 "+",
                 "e",
+                "."
               ];
               if (invalidChars.includes(evt.key)) {
                 evt.preventDefault();
@@ -204,7 +198,7 @@ function displayPlayers() {
                 type="number" 
                 min="-10000" 
                 max="10000"
-                pattern="([-])+([0-9]{0,4})+([.0-9]{0,3})"
+                pattern="([-])+([0-9]{0,4})"
                 id="points${playerPosition}">
                 <button class="add-points" onclick="updateScore(${playerPosition})">+</button>
             </div>
@@ -235,7 +229,7 @@ function updateScore(position) {
     if(existingPlayers[position]) {
         
         let points = document.getElementById(`points${position}`).value;
-            if(isNaN(parseFloat(points))) {
+            if(isNaN(parseInt(points))) {
                 errorMsg.innerHTML = "Invalid value";
                 throw `Invalid value euntered`;
             } else {
@@ -243,9 +237,9 @@ function updateScore(position) {
                     errorMsg.innerHTML = "Value out of range. Min -10000, Max 10000";
                     throw `Value out of range minmax`;
                 } else {
-                    let score = Number.parseFloat(existingPlayers[position].score);
-                    score += Number.parseFloat(points);
-                    existingPlayers[position].score = score.toFixed(2);
+                    let score = Number.parseInt(existingPlayers[position].score);
+                    score += Number.parseInt(points);
+                    existingPlayers[position].score = score;
                     localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
                     location.reload();
                 }
