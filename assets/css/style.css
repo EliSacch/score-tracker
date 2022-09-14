@@ -291,6 +291,7 @@ width: 100%;
     height: 100%;
     display: flex;
     align-items: flex-end; 
+    margin-top: 1em;
 }
 
 .finish {
@@ -310,7 +311,8 @@ width: 100%;
 /* modals*/
 #new-player,
 #options,
-#new-game-modal {
+#new-game-modal,
+#prompt-finish.modal {
     display: none;
 }
 
@@ -320,11 +322,14 @@ width: 100%;
 
 .modal::after {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    bottom: 0;
+    right:0;
+    width: 100%;
     height: 100vh;
+    overflow: hidden;
     background-color: rgba(0,0,0, 0.7);
     isolation: isolate;
 }
@@ -437,6 +442,12 @@ font-size: 1.2rem;
 
 #darts-mode:not(:checked)::before {
     transition: all .3s ease-in-out;
+}
+
+/* Finish Game */
+
+#prompt-finish p {
+    padding: 2em;
 }
 
 /* footer */
