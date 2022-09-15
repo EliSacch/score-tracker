@@ -11,8 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
             let buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
             switch (buttonAction) { 
+                case "about":
+                    openAbout();
+                    break;
                 case "form":
-                    console.log('action handled via submit');  
+                    //the action here is andled when submitting form
                     break;
                 case "openNewGame":
                     openNewGame();
@@ -89,6 +92,12 @@ function toggleMode() {
             limitLabel.style.display="block";
         }
     }   
+}
+
+/**This function opens the about modal */
+function openAbout() {
+    let modal = document.getElementById('about');
+    modal.style.display = "block";
 }
 
 /** This function opens the options modal */
@@ -388,9 +397,12 @@ function finishGameAlert() {
 /** This function redirects to the rank page */
 function finalScore() {
     let sortedList = playersScores;
+
+    /* Start of code from 'All Things JavaScript, LLC' */
     sortedList.sort(function(a,b) {
         return a.score - b.score;
     });
+    /* End of code from 'All Things JavaScript, LLC' */
 
     if(isDartsMode == 'false') {
         let reversed = playersScores.reverse();

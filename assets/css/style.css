@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root {
-
     /* color scheme */
     --primary-color: hsl(139, 51%, 42%);
     --secondary-color: hsl(341, 98%, 56%);
@@ -9,13 +8,10 @@
     --neutral-color: hsl(38, 89%, 86%);
 
     /* fonts */
-
     --basic-font: 'Quicksand', sans-serif;
-
 }
 
 /*General*/
-
 *,
 *::before,
 *::after {
@@ -23,11 +19,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 *:focus {
     outline: none;
 }
-
 * a {
     color: inherit;
     text-decoration: none;
@@ -88,6 +82,9 @@ body {
     font-size: 2rem;
 }
 
+.btn-smaller {
+    font-size: 1.5rem;
+}
 
 .btn-rectangular {
     font-family: inherit;
@@ -120,16 +117,45 @@ button.btn-rectangular:hover,
 }
 
 /*landing page */
-
 .actions {
     margin: 2em 0;
+    max-height: 300px;
+    position: relative;
+}
+
+#about > div{
+    position: absolute;
+    top: 300px;
+    max-height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#about.about-content {
+    width: 90%;
+    position: absolute;
+    overflow: scroll;
+    
+    top: 300px;
+}
+
+#about h1 {
+    font-size: 1.7rem;
+}
+
+#about h2 {
+    font-size: 1.5rem;
+}
+
+#about p {
+    font-size: 1.3rem;
 }
 
 
 /* game page */
 
 .small-logo {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 header {
