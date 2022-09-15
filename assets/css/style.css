@@ -312,7 +312,8 @@ width: 100%;
 #new-player,
 #options,
 #new-game-modal,
-#prompt-finish.modal {
+#prompt-finish.modal,
+#leaderboard {
     display: none;
 }
 
@@ -448,6 +449,44 @@ font-size: 1.2rem;
 
 #prompt-finish p {
     padding: 2em;
+}
+
+#leaderboard {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    isolation: isolate;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dark-color);
+}
+
+#leaderboard > div {
+    display: flex;
+    height: 100%;
+}
+
+#ranking {
+    height: 100%;
+    margin: 2em;
+    font-size: 2rem;
+    text-align: left;
+}
+
+#ranking > div:first-child {
+    font-size: 2em;
+    margin-bottom: 20px;
+    background-color: var(--neutral-color);
+    color: var(--dark-color);
+    padding: .5em;
+}
+
+.players-rank {
+    margin: 0 auto;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 20px 1fr auto;
 }
 
 /* footer */

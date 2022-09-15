@@ -146,22 +146,36 @@
         </div>
         <!-- End of New Game modal-->
 
-
         <!-- Beginning of Finish modal-->
         <div class="modal" id="prompt-finish">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
                 
                 <p>You have reached the target score. Do you wanna finish the game?</p>
-
-                <div class="display-inline">
-                    <button class="btn btn-rectangular secondary-color" data-type="hideGrandParent">No</button>
-                    <button class="btn btn-rectangular" data-type="finalScore">Finish</button>
-                </div>              
+                
+                    <div class="display-inline" method="GET">                       
+                            <button class="btn btn-rectangular secondary-color" data-type="hideGrandParent">No</button>
+                            <button class="btn btn-rectangular" data-type="finalScore">Finish</button>
+                    </div>  
+                        
             </div>
         </div>
         <!-- End of Finish modal-->
+
+        <!-- Beginning of Leaderboard modal-->
+        <div id="leaderboard">
+            <div class="center-items">
+                
+                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <div>
+                    <div id="ranking"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Leaderboard modal-->
     </div>
+
+
 
     
     <footer class="center-items">

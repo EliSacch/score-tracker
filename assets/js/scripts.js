@@ -387,39 +387,44 @@ function finishGameAlert() {
 
 /** This function redirects to the rank page */
 function finalScore() {
-    /*First we sort the array*/
-    let sorted = false;
-    //iteration limit to avoid infinite loop
-    let safeLimit = 20;
-    let iterations = 0;
-    while(!sorted) {
-        let check = true;
-        for(let i = 0; i < ((playersScores.length)-1); i++) {
-            let temp = playersScores[i];
-            if(temp.score > playersScores[i+1].score) {
-                playersScores[i] = playersScores[i+1];
-                playersScores[i+1] = temp;
-                check=false;
-            } else {
-                continue;
-            }      
-        }
-        if(check==true) {
-            sorted = true;
-        }
-        iterations++;
-        if(iterations >= safeLimit) {
-            sorted=true;
-        }
-    }
+    let sortedList = playersScores;
+    sortedList.sort(function(a,b) {
+        return a.score - b.score;
+    });
 
-    /* Then if not darts mode we reverse it*/
-    if(!isDartsMode) {
-        playersScores.reverse();
-    }
+    if(isDartsMode == 'false') {
+        let reversed = playersScores.reverse();
+        localStorage.setItem('finalRanking', JSON.stringify(reversed));
+    } else {
+        localStorage.setItem('finalRanking', JSON.stringify(sortedList));
+    }  
+   showRanking();
+}
 
-    /* Then we display the final rank*/
-
+function showRanking() {
+    let promptFinish = document.getElementById('prompt-finish');
+    let leaderboard = document.getElementById('leaderboard');
+    promptFinish.style.display = "none";
+    leaderboard.style.display = "block";
+    let finalRanking = JSON.parse(localStorage.getItem('finalRanking'));
+    let ranking = document.getElementById('ranking');
+    for(let player of finalRanking) {
+        let username = player.name;
+        let score = player.score;
+        let playerPosition = finalRanking.indexOf(player);
+    
+        //create HTML for the players areas
+        let newDiv = document.createElement('div');
+        newDiv.classList.add("display-inline");
+        newDiv.innerHTML = `
+        <div class="display-inline players-rank">
+            <div>${playerPosition+1}. </div>
+            <div>${username}</div>
+            <div>${score}</div>
+        </div>
+        `;
+        ranking.appendChild(newDiv);
+    } 
 }
 
    

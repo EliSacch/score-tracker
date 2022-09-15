@@ -242,6 +242,7 @@ Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event
 
 - To prevent the possibility to add __e__ and __+__ as values into the add pointa input, I checked this page in [stackoverflow](https://stackoverflow.com/questions/39291997/how-to-block-e-in-input-type-number) but changing the code to adapt it to my needs.
 
+- The code to sort an array of objects based on one parameter was taken from this tutorial of All things JavaScript, LLC [JavaScript Problem: Sorting an Array of Objects](https://www.youtube.com/watch?v=0d76_2sksWY)
 
 
 ### Content
@@ -250,9 +251,7 @@ Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event
 
 - The icons were taken from [Font Awesome](https://fontawesome.com/)
 
-- The following fonts, used for the project, are from [Google Fonts](https://fonts.google.com/):
-  - 
-  - 
+- The following fonts, used for the project, are from [Google Fonts](https://fonts.google.com/)
 
 ### Media
 
