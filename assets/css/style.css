@@ -117,6 +117,23 @@ button.btn-rectangular:hover,
 }
 
 /*landing page */
+
+#resume:disabled {
+    opacity: .8;
+}
+
+#resume:disabled:hover,
+#resume:disabled:focus {
+    background-color: var(--dark-color);
+    color: var(--neutral-color);
+    font-weight: normal;
+    border: 1px solid white;
+    box-shadow: 
+    0 0 0 4px var(--dark-color),
+    0 0 0 5px white
+}
+
+
 .actions {
     margin: 2em 0;
     max-height: 300px;
@@ -124,8 +141,6 @@ button.btn-rectangular:hover,
 }
 
 #about > div{
-    position: absolute;
-    top: 300px;
     max-height: 300px;
     overflow: scroll;
     overflow-x: hidden;
@@ -134,7 +149,7 @@ button.btn-rectangular:hover,
 .about-content {
     position: absolute;
     top:0;
-    padding: 50px 0;
+    margin: 50px 0;
     width: 90%;
     overflow: scroll;
 }
@@ -343,7 +358,8 @@ width: 100%;
 #new-player,
 #options,
 #new-game-modal,
-#prompt-finish.modal {
+#prompt-finish.modal,
+#leaderboard {
     display: none;
 }
 
@@ -410,7 +426,10 @@ font-size: 1.2rem;
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 1em;
+}
+
+.btn-close i {
+    font-size: 1.5em;
 }
 
 .btn-remove:hover,
@@ -455,7 +474,7 @@ font-size: 1.2rem;
     display: block;
     position: absolute;
     height: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     background-color: var(--neutral-color);
     opacity: .7;
@@ -522,7 +541,7 @@ font-size: 1.2rem;
     margin: 0 auto;
     display: grid;
     width: 90%;
-    grid-template-columns: 20px 1fr auto;
+    grid-template-columns: 20px 2fr 1fr;
 }
 
 /* footer */

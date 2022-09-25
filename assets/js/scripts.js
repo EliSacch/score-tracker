@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 default:
                     throw `Action ${buttonAction} not recognized`;
             }
-        })
+        });
     }
 
     toggleEmptyDivPlaceholder();
@@ -58,10 +58,18 @@ document.addEventListener("DOMContentLoaded", function() {
     preventE();
 
     /*Add event listener for darts mode checkbox*/
-    let modeToggler = document.getElementById('darts-mode');
+    const modeToggler = document.getElementById('darts-mode');
     if(modeToggler != null) {
         modeToggler.addEventListener("change", toggleMode);
     }
+
+    /*Check if a new game has been initiated and disable resume button if there is no game*/
+    const isDartsMode = localStorage.getItem('dartsMode');
+    const resumeButton = document.getElementById('resume');
+    if (isDartsMode == null) {
+        resumeButton.setAttribute("disabled","true");
+    }
+
 });
 
     /* INITIALIZE LOCAL STORAGE */

@@ -24,7 +24,7 @@
 
         <div class="actions center-items">
             <button id="new-game" class="btn btn-rectangular" data-type="openNewGame">New Game</button>
-            <button class="btn btn-smaller btn-rectangular secondary-color" data-type="redirect">Resume</button>
+            <button id="resume" class="btn btn-smaller btn-rectangular secondary-color" data-type="redirect">Resume</button>
             <button class="btn btn-smaller btn-rectangular secondary-color" data-type="about">About</button>
         </div> 
     </div>
@@ -39,7 +39,7 @@
 
                             <div id="darts-checkbox" class="display-inline">
                                 <label for="darts-mode">Darts Mode</label>
-                                <input type="checkbox" name="dartsMode" id="darts-mode" checked="true">
+                                <input type="checkbox" name="dartsMode" id="darts-mode" checked>
                             </div>
 
                             <label for="set-initial-score">Initial Score:</label>
@@ -48,7 +48,6 @@
                             type="number" 
                             min="-10000"
                             max="10000"
-                            pattern="([-])+([0-9]{0,4})"
                             id="set-initial-score" 
                             class="restrict-input"
                             name="setInitialScore" 
@@ -61,7 +60,6 @@
                             type="number" 
                             min="-10000"
                             max="10000"
-                            pattern="([-])+([0-9]{0,4})"
                             id="limit" 
                             class="restrict-input"
                             name="limit" 

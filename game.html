@@ -72,7 +72,6 @@
                             type="number" 
                             min="-10000"
                             max="10000"
-                            pattern="([-])+([0-9]{0,4})"
                             id="initial-score" 
                             class="restrict-input"
                             name="initialScore" 
@@ -108,7 +107,7 @@
 
                         <div id="darts-checkbox" class="display-inline">
                             <label for="darts-mode">Darts Mode</label>
-                            <input type="checkbox" name="dartsMode" id="darts-mode" checked="true">
+                            <input type="checkbox" name="dartsMode" id="darts-mode" checked>
                         </div>
 
                         <label for="set-initial-score">Initial Score:</label>
@@ -117,7 +116,6 @@
                         type="number" 
                         min="-10000"
                         max="10000"
-                        pattern="([-])+([0-9]{0,4})"
                         id="set-initial-score" 
                         class="restrict-input"
                         name="setInitialScore" 
@@ -130,7 +128,6 @@
                         type="number" 
                         min="-10000"
                         max="10000"
-                        pattern="([-])+([0-9]{0,4})"
                         id="limit" 
                         class="restrict-input"
                         name="limit" 
@@ -153,7 +150,7 @@
                 
                 <p>You have reached the target score. Do you wanna finish the game?</p>
                 
-                    <div class="display-inline" method="GET">                       
+                    <div class="display-inline">                       
                             <button class="btn btn-rectangular secondary-color" data-type="hideGrandParent">No</button>
                             <button class="btn btn-rectangular" data-type="finalScore">Finish</button>
                     </div>  
@@ -175,9 +172,6 @@
         <!-- End of Leaderboard modal-->
     </div>
 
-
-
-    
     <footer class="center-items">
         <ul class="display-inline">
             <li><a href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li>
