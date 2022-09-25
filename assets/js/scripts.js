@@ -96,17 +96,19 @@ function toggleMode() {
 
 /**This function opens the about modal */
 function openAbout() {
-    let modal = document.getElementById('about');
+    const modal = document.getElementById('about');
     modal.style.display = "block";
 }
 
 /** This function opens the options modal */
 function openOptions() {
-    let modal = document.getElementById('options');
+    const modal = document.getElementById('options');
     modal.style.display = "block";
 }
-
-/** this function closes the modal*/
+/**
+ * this function closes the modal
+ * @param {DOMElement} parent 
+ */
 function hideParent(parent) {
     parent.style.display = "none";
 }

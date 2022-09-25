@@ -131,12 +131,16 @@ button.btn-rectangular:hover,
     overflow-x: hidden;
 }
 
-#about.about-content {
-    width: 90%;
+.about-content {
     position: absolute;
+    top:0;
+    padding: 50px 0;
+    width: 90%;
     overflow: scroll;
-    
-    top: 300px;
+}
+
+.about-content h2 {
+    margin: 1em 0 .3em 0;
 }
 
 #about h1 {
@@ -335,11 +339,11 @@ width: 100%;
 
 
 /* modals*/
+#about,
 #new-player,
 #options,
 #new-game-modal,
-#prompt-finish.modal,
-#leaderboard {
+#prompt-finish.modal {
     display: none;
 }
 
@@ -370,6 +374,7 @@ width: 100%;
 
     font-size: 1.5rem;
     min-height: 50%;
+    max-height: 90%;
     width: 90%;
     max-width: 400px;
     margin: 0 auto;
@@ -481,7 +486,7 @@ font-size: 1.2rem;
     position: fixed;
     top: 0;
     height: 100%;
-    width: 100%;
+    width: 90%;
     isolation: isolate;
     align-items: center;
     justify-content: center;
@@ -491,13 +496,18 @@ font-size: 1.2rem;
 #leaderboard > div {
     display: flex;
     height: 100%;
+    margin: 0 auto;
 }
 
 #ranking {
     height: 100%;
-    margin: 2em;
-    font-size: 2rem;
+    margin: 0 auto;
+    font-size: 1.3rem;
     text-align: left;
+}
+#ranking div {
+    margin: 0 auto;
+    max-width: 90%;
 }
 
 #ranking > div:first-child {
@@ -511,7 +521,7 @@ font-size: 1.2rem;
 .players-rank {
     margin: 0 auto;
     display: grid;
-    width: 100%;
+    width: 90%;
     grid-template-columns: 20px 1fr auto;
 }
 
