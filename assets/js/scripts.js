@@ -431,7 +431,7 @@ const targetScore = localStorage.getItem('limit');
 const isDartsMode = localStorage.getItem('dartsMode');
 if(targetScore != "null") {
     for(let score of playersScores) {
-        if(isDartsMode) {
+        if(isDartsMode == "true") {
             if(score.score <= targetScore) {
                 finishGameAlert();
             }
