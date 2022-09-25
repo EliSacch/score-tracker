@@ -43,7 +43,7 @@
         <div id="score-area"></div>
 
         <div id="finish-game">
-            <button class="btn finish" data-type="finishGameAlert">Finish Game</button>
+            <button class="btn finish" data-type="finalScore">Finish Game</button>
         </div>
 
 
@@ -59,7 +59,7 @@
                             <input 
                             type="text" 
                             title="Minimum of 2 and maximum of 12 characthers. It must contain only letters, numbers and the following characthers: _ -"
-                            pattern="[A-Za-z0-9_-]{2,12}"
+                            pattern="[ A-Za-z0-9_-]{2,12}"
                             id="username" 
                             name="username" 
                             placeholder="Player Name" 
@@ -122,7 +122,7 @@
                         value='501'
                         >
 
-                        <label for="limit" id="limit-label">Limit:</label>
+                        <label for="limit" id="limit-label">Limit(optional):</label>
 
                         <input 
                         type="number" 
@@ -151,7 +151,7 @@
                 <p>You have reached the target score. Do you wanna finish the game?</p>
                 
                     <div class="display-inline">                       
-                            <button class="btn btn-rectangular secondary-color" data-type="hideGrandParent">No</button>
+                            <button class="btn btn-rectangular secondary-color" data-type="continueGame">No</button>
                             <button class="btn btn-rectangular" data-type="finalScore">Finish</button>
                     </div>  
                         

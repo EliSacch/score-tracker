@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "hideParent":
                     hideParent(button.parentNode.parentNode);
                     break;
-                case "hideGrandParent":
+                case "continueGame":
                     hideParent(button.parentNode.parentNode.parentNode);
+                    removeLimit();
                     break;
                 case "addPlayer":
                     addPlayerValidation();
@@ -73,8 +74,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
     /* INITIALIZE LOCAL STORAGE */
-    let playersArray = localStorage.getItem('playersArray');
-    let emptyArray = new Array();
+    const playersArray = localStorage.getItem('playersArray');
+    const emptyArray = new Array();
     if(playersArray === null) {
         localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
     }
@@ -88,14 +89,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /** This function toggled darts mode */
 function toggleMode() {
-    let dartsModeToggler = document.getElementById('darts-mode');
+    const dartsModeToggler = document.getElementById('darts-mode');
     if(dartsModeToggler != null) {
-        let limitInput = document.getElementById('limit');
-        let limitLabel = document.getElementById('limit-label');
+        const limitInput = document.getElementById('limit');
+        const limitLabel = document.getElementById('limit-label');
+        const initialScore = document.getElementById('set-initial-score');
         if(dartsModeToggler.checked) {
+            limitInput.value = 0;
+            initialScore.value = 501;
             limitInput.style.display="none";
             limitLabel.style.display="none";
         } else {
+            limitInput.value = "";
+            initialScore.value = 0;
             limitInput.style.display="block";
             limitLabel.style.display="block";
         }
@@ -126,10 +132,10 @@ function hideParent(parent) {
  */
  function preventE() {
     /*Code from stackoverflow*/
-        let inputNumber = document.getElementsByClassName("restrict-input");
+        const inputNumber = document.getElementsByClassName("restrict-input");
         for(let inputs of inputNumber) {
             inputs.addEventListener("keypress", function (evt) {
-                let invalidChars = [
+                const invalidChars = [
                     "+",
                     "e",
                     ".",
@@ -145,8 +151,8 @@ function hideParent(parent) {
 
 /** This function set the score for all players to 0 */
 function resetScore() {
-    let existingPlayers = JSON.parse(playersArray);
-    let globalInitialScore = localStorage.getItem('globalInitialScore');
+    const existingPlayers = JSON.parse(playersArray);
+    const globalInitialScore = localStorage.getItem('globalInitialScore');
     for(let player of existingPlayers) {
         if(globalInitialScore != null) {
             player.score= globalInitialScore;
@@ -159,7 +165,7 @@ function resetScore() {
 }
 
 let playersList = document.getElementById('players');
-let placeholderEmpty = document.getElementsByClassName('empty');
+const placeholderEmpty = document.getElementsByClassName('empty');
 /**
  * This function toggles the placeholder element for players div.
  * It hides the placeholder when the players div is not empty anymore
@@ -181,14 +187,19 @@ function toggleEmptyDivPlaceholder() {
 /* NEW GAME FUNCTIONS */
 /** This function opens the new game modal */
 function openNewGame() {
-    let modal = document.getElementById('new-game-modal');
-    let limitInput = document.getElementById('limit');
-    let limitLabel = document.getElementById('limit-label');
-    let dartsModeChecked = document.getElementById('darts-mode');
+    const modal = document.getElementById('new-game-modal');
+    const initialScore = document.getElementById('set-initial-score');
+    const limitInput = document.getElementById('limit');
+    const limitLabel = document.getElementById('limit-label');
+    const dartsModeChecked = document.getElementById('darts-mode');
     if(dartsModeChecked.checked) {
+            limitInput.value = 0;
+            initialScore.value = 501;
             limitInput.style.display="none";
             limitLabel.style.display="none";
         } else {
+            limitInput.value = "";
+            initialScore.value = 0;
             limitInput.style.display="block";
             limitLabel.style.display="block";
         }
@@ -197,18 +208,18 @@ function openNewGame() {
 
 /** Form validation for new game*/
 function addNewGameValidation() {
-    let errorMsg = document.getElementById('new-game-error-msg');
+    const errorMsg = document.getElementById('new-game-error-msg');
     let initialScore = document.getElementById('set-initial-score').value;
     let limit = document.getElementById('limit').value;
     let mode = document.getElementById('darts-mode').checked;
 
-    let newGameForm = document.getElementById('new-game-form');
+    const newGameForm = document.getElementById('new-game-form');
 
         if(initialScore === "") {
             errorMsg.innerHTML = "Please, enter the initial score";
         } else if(mode === true && initialScore < 1) {
             errorMsg.innerHTML = "Initial score must be greater than 0";
-        } else if(mode === false && initialScore > limit) {
+        } else if(limit != "" && (mode === false && initialScore > limit)) {
             errorMsg.innerHTML = "Initial score must be lower than limit";
         } else if(
             (limit != "" && 
@@ -233,15 +244,15 @@ function newGame() {
     localStorage.setItem('globalInitialScore', JSON.stringify(parseInt(initialScore)));
     localStorage.setItem('limit', JSON.stringify(parseInt(limit)));
     //remove existing players from playersList
-    let emptyArray = [];
-    localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
+    const emptyArray = [];
+    localStorage.setItem('playersArray', JSON.stringify(emptyArray));
 }
 
 /* ADD PLAYER FUNCTIONS */
 /** This function opens the new player modal */
 function openAddPlayer() {
-    let modal = document.getElementById('new-player');
-    let intialValue = document.getElementById('initial-score');
+    const modal = document.getElementById('new-player');
+    const intialValue = document.getElementById('initial-score');
     intialValue.value = localStorage.getItem('globalInitialScore');
     modal.style.display = "block";
     console.log(intialValue);
@@ -249,10 +260,10 @@ function openAddPlayer() {
 
 /** Form validation for new player*/
 function addPlayerValidation() {
-    let errorMsg = document.getElementById('modal-error-msg');
-        let addPlayerName = document.getElementById('username').value;
-        let initialScore = document.getElementById('initial-score').value;
-        let newPlayerForm = document.getElementById('new-player-form');
+    const errorMsg = document.getElementById('modal-error-msg');
+        const addPlayerName = document.getElementById('username').value;
+        const initialScore = document.getElementById('initial-score').value;
+        const newPlayerForm = document.getElementById('new-player-form');
 
         if(addPlayerName === "") {
             errorMsg.innerHTML = "Please, enter a name.";
@@ -266,18 +277,18 @@ function addPlayerValidation() {
         }
 } 
 
-let playersN = 0;
+
 /**
  * This functions adds a new player to local storage.
  */
 function addPlayer() { 
-    let addPlayerName = document.getElementById('username').value;
+    const addPlayerName = document.getElementById('username').value;
     let initialScore = document.getElementById('initial-score').value;
     if(!initialScore) {
         initialScore = 0;
     }
     let existingPlayers = JSON.parse(playersArray);
-    let newPlayer = {
+    const newPlayer = {
         name: addPlayerName,
         score: initialScore
     };
@@ -291,19 +302,28 @@ function addPlayer() {
  * This function create the player div to display in players section
  */
 function displayPlayers() {
-    let existingPlayers = JSON.parse(playersArray);
-    let displayArea = document.getElementById('players');
-    let scoreArea = document.getElementById('score-area');
+    const existingPlayers = JSON.parse(playersArray);
+    const displayArea = document.getElementById('players');
+    const scoreArea = document.getElementById('score-area');
+    const isDartsMode = localStorage.getItem('dartsMode');
     if(displayArea != null) {
         if(existingPlayers!=null) {
             for(let player of existingPlayers) {
                 let username = player.name;
                 let score = player.score;
                 let playerPosition = existingPlayers.indexOf(player);
+                let operand = "+";
+                let operation = "addition";
+                if(isDartsMode == "true") {
+                    operand="-";
+                    operation = "subtraction";
+                }
+
             
                 //create HTML for the players areas
-                let newDiv = document.createElement('div');
+                const newDiv = document.createElement('div');
                 newDiv.classList.add("display-inline");
+                
                 newDiv.innerHTML = `
                 <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
                 <div class="display-name">${username}</div>
@@ -314,13 +334,13 @@ function displayPlayers() {
                     max="10000"
                     pattern="([-])+([0-9]{0,4})"
                     id="points${playerPosition}">
-                    <button class="add-points" onclick="updateScore(${playerPosition})">+</button>
+                    <button class="add-points" onclick="updateScore(${playerPosition}, '${operation}')">${operand}</button>
                 </div>
                 `;
                 displayArea.appendChild(newDiv);
          
                 //create HTML for the scores area
-                let scoreDiv = document.createElement('div');
+                const scoreDiv = document.createElement('div');
                 scoreDiv.classList.add("display-inline");
                 scoreDiv.innerHTML = `
                 
@@ -340,7 +360,7 @@ function displayPlayers() {
  * This function removed players from local storage and then reloads page to update display area
  */
 function removePlayer(position) {
-    let existingPlayers = JSON.parse(playersArray);
+    const existingPlayers = JSON.parse(playersArray);
     if(existingPlayers[position]) {
         existingPlayers.splice(position, 1);
         localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
@@ -355,12 +375,12 @@ function removePlayer(position) {
 /**
  * This function updates the player's score and then reloads page to update display area
  */
-function updateScore(position) {
-    let errorMsg = document.getElementById('error-msg');
-    let existingPlayers = JSON.parse(playersArray);
+function updateScore(position, operation) {
+    const errorMsg = document.getElementById('error-msg');
+    const existingPlayers = JSON.parse(playersArray);
     if(existingPlayers[position]) {
         
-        let points = document.getElementById(`points${position}`).value;
+        const points = document.getElementById(`points${position}`).value;
             if(isNaN(parseInt(points))) {
                 errorMsg.innerHTML = "Invalid value";
                 throw `Invalid value euntered`;
@@ -369,8 +389,17 @@ function updateScore(position) {
                     errorMsg.innerHTML = "Value out of range. Min -10000, Max 10000";
                     throw `Value out of range minmax`;
                 } else {
-                    let score = Number.parseInt(existingPlayers[position].score);
-                    score += Number.parseInt(points);
+                   let score = Number.parseInt(existingPlayers[position].score);
+
+                    if(operation == "addition") {
+                        score += Number.parseInt(points);
+                    } else if(operation == "subtraction") {
+                        score -= Number.parseInt(points);
+                    } else {
+                        errorMsg.innerHTML = "There was an error. Try again.";
+                        throw `Invalid operation: ${operation}`;
+                    }
+                                      
                     existingPlayers[position].score = score;
                     localStorage.setItem('playersArray', JSON.stringify(existingPlayers));
                     location.reload();
@@ -382,25 +411,32 @@ function updateScore(position) {
 }
 
 /*FINISH GAME FUNCTIONS*/
-let playersScores = JSON.parse(playersArray);
-let targetScore = localStorage.getItem('limit');
-let isDartsMode = localStorage.getItem('dartsMode');
-
-for(let score of playersScores) {
-    if(isDartsMode) {
-        if(score.score <= targetScore) {
-            //finishGameAlert();
-        }
-    } else {
-        if(score.score >= targetScore) {
-            //finishGameAlert();
-        }
-    }   
+const playersScores = JSON.parse(playersArray);
+const targetScore = localStorage.getItem('limit');
+const isDartsMode = localStorage.getItem('dartsMode');
+if(targetScore != "null") {
+    for(let score of playersScores) {
+        if(isDartsMode) {
+            if(score.score <= targetScore) {
+                finishGameAlert();
+            }
+        } else {
+            if(score.score >= targetScore) {
+                finishGameAlert();
+            }
+        }   
+    }
 }
 
+/** this function prompts user to finish game if limit is set */
 function finishGameAlert() {
-    let promptFinish = document.getElementById('prompt-finish');
+    const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
+}
+
+/** This functions erase the limit if players want to continue the game */
+function removeLimit() {
+    localStorage.setItem('limit', null);
 }
 
 
@@ -415,7 +451,7 @@ function finalScore() {
     /* End of code from 'All Things JavaScript, LLC' */
 
     if(isDartsMode == 'false') {
-        let reversed = playersScores.reverse();
+        const reversed = playersScores.reverse();
         localStorage.setItem('finalRanking', JSON.stringify(reversed));
     } else {
         localStorage.setItem('finalRanking', JSON.stringify(sortedList));
@@ -424,19 +460,19 @@ function finalScore() {
 }
 
 function showRanking() {
-    let promptFinish = document.getElementById('prompt-finish');
-    let leaderboard = document.getElementById('leaderboard');
+    const promptFinish = document.getElementById('prompt-finish');
+    const leaderboard = document.getElementById('leaderboard');
     promptFinish.style.display = "none";
     leaderboard.style.display = "block";
-    let finalRanking = JSON.parse(localStorage.getItem('finalRanking'));
-    let ranking = document.getElementById('ranking');
+    const finalRanking = JSON.parse(localStorage.getItem('finalRanking'));
+    const ranking = document.getElementById('ranking');
     for(let player of finalRanking) {
         let username = player.name;
         let score = player.score;
         let playerPosition = finalRanking.indexOf(player);
     
         //create HTML for the players areas
-        let newDiv = document.createElement('div');
+        const newDiv = document.createElement('div');
         newDiv.classList.add("display-inline");
         newDiv.innerHTML = `
         <div class="display-inline players-rank">
@@ -448,5 +484,3 @@ function showRanking() {
         ranking.appendChild(newDiv);
     } 
 }
-
-   
