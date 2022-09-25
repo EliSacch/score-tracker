@@ -48,6 +48,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "finalScore":
                     finalScore();
                     break;
+                case "closeLeaderboard":
+                    hideParent(button.parentNode.parentNode);
+                    clearLeaderboard();
+                    break; 
                 default:
                     throw `Action ${buttonAction} not recognized`;
             }
@@ -69,6 +73,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const resumeButton = document.getElementById('resume');
     if (isDartsMode == null) {
         resumeButton.setAttribute("disabled","true");
+    }
+
+    /*display target on screen*/
+    const limit = localStorage.getItem('limit');
+    const displayTarget = document.getElementById('target');
+    if((limit == "null")&&(isDartsMode == "true")) {
+        displayTarget.innerHTML = "As low as possible";
+    } else if((limit == "null")&&(isDartsMode == "false")) {
+        displayTarget.innerHTML = "As high as possible";
+    } else {
+        displayTarget.innerHTML = limit;
     }
 
 });
@@ -459,6 +474,7 @@ function finalScore() {
    showRanking();
 }
 
+/** This function openas the leaderboard and shows the ranking */
 function showRanking() {
     const promptFinish = document.getElementById('prompt-finish');
     const leaderboard = document.getElementById('leaderboard');
@@ -483,4 +499,10 @@ function showRanking() {
         `;
         ranking.appendChild(newDiv);
     } 
+}
+
+/** This function clears the leaderboard when we close it */
+function clearLeaderboard() {
+    const ranking = document.getElementById('ranking');
+    ranking.innerHTML = "";
 }
