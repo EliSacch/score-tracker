@@ -127,12 +127,14 @@ function toggleMode() {
 function openAbout() {
     const modal = document.getElementById('about');
     modal.style.display = "block";
-}
+    document.getElementById('about').focus();
+}           
 
 /** This function opens the options modal */
 function openOptions() {
     const modal = document.getElementById('options');
     modal.style.display = "block";
+    document.getElementById('new-game-btn').focus();
 }
 /**
  * this function closes the modal
@@ -219,6 +221,7 @@ function openNewGame() {
             limitLabel.style.display="block";
         }
     modal.style.display = "block";
+    document.getElementById('darts-mode').focus();
 }
 
 /** Form validation for new game*/
@@ -270,7 +273,7 @@ function openAddPlayer() {
     const intialValue = document.getElementById('initial-score');
     intialValue.value = localStorage.getItem('globalInitialScore');
     modal.style.display = "block";
-    console.log(intialValue);
+    document.getElementById('username').focus();
 }
 
 /** Form validation for new player*/
@@ -447,6 +450,7 @@ if(targetScore != "null") {
 function finishGameAlert() {
     const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
+    document.getElementById('finish-btn').focus();
 }
 
 /** This functions erase the limit if players want to continue the game */

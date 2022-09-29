@@ -55,7 +55,7 @@
 
 
         <!-- Beginning of Add Player Modal-->
-        <div class="modal" id="new-player" aria-modal="true">
+        <div class="modal" id="new-player" role="dialog" aria-modal="true">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close New Player modal"><i class="fas fa-times"></i></button>
                 <form action="game.html" id="new-player-form" method="GET" onsubmit="event.preventDefault(); addPlayerValidation();">
@@ -94,18 +94,18 @@
         <!-- End of Add player modal-->
 
         <!-- Beginning of Options Modal-->
-        <div class="modal" id="options" aria-modal="true">
+        <div class="modal" id="options" role="dialog" aria-modal="true">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent" aria-label="close Options modal"><i class="fas fa-times"></i></button>
 
-                <button class="btn btn-rectangular" data-type="openNewGame" aria-label="Start a new game">New Game</button>
+                <button id="new-game-btn" class="btn btn-rectangular" data-type="openNewGame" aria-label="Start a new game">New Game</button>
                 <button class="btn btn-rectangular secondary-color" data-type="resetScore" area-label="Reset player's scores">Reset Score</button>             
             </div>
         </div>
         <!-- End of Options modal-->
 
         <!-- Beginning of New Game Modal-->
-        <div class="modal" id="new-game-modal" aria-modal="true">
+        <div class="modal" id="new-game-modal" role="dialog" aria-modal="true">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close New Game modal"><i class="fas fa-times"></i></button>
                 
@@ -151,7 +151,7 @@
         <!-- End of New Game modal-->
 
         <!-- Beginning of Finish modal-->
-        <div class="modal" id="prompt-finish" aria-modal="true">
+        <div class="modal" id="prompt-finish" role="dialog" aria-modal="true">
             <div class="modal-action-area center-items">
                 <button class="btn btn-close menu-button" data-type="hideParent" aria-label="You have reached the target"><i class="fas fa-times"></i></button>
                 
@@ -159,7 +159,7 @@
                 
                     <div class="display-inline">                       
                             <button class="btn btn-rectangular secondary-color" data-type="continueGame" aria-label="Continue Game">No</button>
-                            <button class="btn btn-rectangular" data-type="finalScore" aria-label="Show Leaderboard">Finish</button>
+                            <button id="finish-btn" class="btn btn-rectangular" data-type="finalScore" aria-label="Show Leaderboard">Finish</button>
                     </div>  
                         
             </div>
@@ -167,7 +167,7 @@
         <!-- End of Finish modal-->
 
         <!-- Beginning of Leaderboard modal-->
-        <div id="leaderboard" aria-modal="true">
+        <div id="leaderboard" role="dialog" aria-modal="true">
             <div class="center-items">
                 
                 <button class="btn btn-close menu-button" data-type="closeLeaderboard" aria-label="Close Leaderboard"><i class="fas fa-times"></i></button>
