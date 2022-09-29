@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Score tracker always available in your pocket.">
+    <meta name="keywords" content="score, score tracker, darts, game, players, points">
+    <meta name="author" content="Elisa Sacchelli">
+
     <title>Score TRACKER - Game</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -19,14 +23,14 @@
         <div class="small-logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
         <div class="menu">
             <ul class="display-inline">
-                <li><button class="btn menu-button" data-type="openAddPlayer"><i class="fas fa-user-plus"></i></button></li>
-                <li><button class="btn menu-button" data-type="openOptions"><i class="fas fa-cog"></i></button></li>
+                <li><button class="btn menu-button" data-type="openAddPlayer" aria-label="Add a new player"><i class="fas fa-user-plus"></i></button></li>
+                <li><button class="btn menu-button" data-type="openOptions" aria-label="Open Options"><i class="fas fa-cog"></i></button></li>
             </ul>
         </div>
     </header>
 
     <div class="content center-items">
-        <div id="target-container">
+        <div id="target-container" aria-label="Target score" role="region" tabindex="0">
             Target: <span id="target"></span>
         </div>
             <!-- Placeholder for when there are no players added-->
@@ -38,22 +42,22 @@
             <!-- Placeholder for when there are no players added-->
             <div class="empty"><i class="fas fa-ban"></i></div>
         
-        <div id="players" class="display-area">
+        <div id="players" class="display-area" area-label="Player's list and add points section" role="region" tabindex="0">
 
         </div>
         <p class="title">Scores:</p>
 
-        <div id="score-area"></div>
+        <div id="score-area" aria-label="Player's scores" role="region" tabindex="0"></div>
 
         <div id="finish-game">
-            <button class="btn finish" data-type="finalScore">Finish Game</button>
+            <button class="btn finish" data-type="finalScore" aria-label="Click to finish game and show the leaderboard">Finish Game</button>
         </div>
 
 
         <!-- Beginning of Add Player Modal-->
-        <div class="modal" id="new-player">
+        <div class="modal" id="new-player" aria-modal="true">
             <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close New Player modal"><i class="fas fa-times"></i></button>
                 <form action="game.html" id="new-player-form" method="GET" onsubmit="event.preventDefault(); addPlayerValidation();">
                         <div class="center-items">
 
@@ -82,7 +86,7 @@
 
                             <div id="modal-error-msg"></div>
 
-                            <button type="submit" class="btn btn-rectangular" id="add-player" data-type="form">Add player</button>
+                            <button type="submit" class="btn btn-rectangular" id="add-player" data-type="form" aria-label="Add Player to list">Add player</button>
                         </div>  
                     </form>
             </div>
@@ -90,20 +94,20 @@
         <!-- End of Add player modal-->
 
         <!-- Beginning of Options Modal-->
-        <div class="modal" id="options">
+        <div class="modal" id="options" aria-modal="true">
             <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="close Options modal"><i class="fas fa-times"></i></button>
 
-                <button class="btn btn-rectangular" data-type="openNewGame">New Game</button>
-                <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>             
+                <button class="btn btn-rectangular" data-type="openNewGame" aria-label="Start a new game">New Game</button>
+                <button class="btn btn-rectangular secondary-color" data-type="resetScore" area-label="Reset player's scores">Reset Score</button>             
             </div>
         </div>
         <!-- End of Options modal-->
 
         <!-- Beginning of New Game Modal-->
-        <div class="modal" id="new-game-modal">
+        <div class="modal" id="new-game-modal" aria-modal="true">
             <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close New Game modal"><i class="fas fa-times"></i></button>
                 
                 <form action="game.html" id="new-game-form" method="GET" onsubmit="event.preventDefault(); addNewGameValidation()">
                     <div class="center-items">
@@ -138,7 +142,7 @@
 
                         <div id="new-game-error-msg"></div>
 
-                        <button type="submit" class="btn btn-rectangular" data-type="form">Start</button> 
+                        <button type="submit" class="btn btn-rectangular" data-type="form" aria-label="Click to start the game">Start</button> 
                     </div>  
                 </form>
                     
@@ -147,15 +151,15 @@
         <!-- End of New Game modal-->
 
         <!-- Beginning of Finish modal-->
-        <div class="modal" id="prompt-finish">
+        <div class="modal" id="prompt-finish" aria-modal="true">
             <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="You have reached the target"><i class="fas fa-times"></i></button>
                 
                 <p>You have reached the target score. Do you wanna finish the game?</p>
                 
                     <div class="display-inline">                       
-                            <button class="btn btn-rectangular secondary-color" data-type="continueGame">No</button>
-                            <button class="btn btn-rectangular" data-type="finalScore">Finish</button>
+                            <button class="btn btn-rectangular secondary-color" data-type="continueGame" aria-label="Continue Game">No</button>
+                            <button class="btn btn-rectangular" data-type="finalScore" aria-label="Show Leaderboard">Finish</button>
                     </div>  
                         
             </div>
@@ -163,12 +167,12 @@
         <!-- End of Finish modal-->
 
         <!-- Beginning of Leaderboard modal-->
-        <div id="leaderboard">
+        <div id="leaderboard" aria-modal="true">
             <div class="center-items">
                 
-                <button class="btn btn-close menu-button" data-type="closeLeaderboard"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="closeLeaderboard" aria-label="Close Leaderboard"><i class="fas fa-times"></i></button>
                 <div>
-                    <div id="ranking"></div>
+                    <div id="ranking" area-label="leaderboard" role="region" tabindex="0"></div>
                 </div>
             </div>
         </div>
@@ -178,7 +182,7 @@
     <footer class="center-items">
         <ul class="display-inline">
             <li><a href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="www.linkedin.com/in/elisa-sacchelli" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
         </ul>
         <div id="powered">Powered by Elisa Sacchelli</div>
     </footer>

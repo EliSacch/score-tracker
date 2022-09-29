@@ -23,16 +23,16 @@
         <div id="logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
 
         <div class="actions center-items">
-            <button id="new-game" class="btn btn-rectangular" data-type="openNewGame">New Game</button>
-            <button id="resume" class="btn btn-smaller btn-rectangular secondary-color" data-type="redirect">Resume</button>
-            <button class="btn btn-smaller btn-rectangular secondary-color" data-type="about">About</button>
+            <button id="new-game" class="btn btn-rectangular" data-type="openNewGame" aria-label="New Game">New Game</button>
+            <button id="resume" class="btn btn-smaller btn-rectangular secondary-color" data-type="redirect" aria-label="Resume Previous Game">Resume</button>
+            <button class="btn btn-smaller btn-rectangular secondary-color" data-type="about" aria-label="About">About</button>
         </div> 
     </div>
 
             <!-- Beginning of New Game Modal-->
-            <div class="modal" id="new-game-modal">
+            <div class="modal" id="new-game-modal" aria-modal="true">
                 <div class="modal-action-area center-items">
-                    <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                    <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close New Game Modal"><i class="fas fa-times"></i></button>
                     
                     <form action="game.html" id="new-game-form" method="GET" onsubmit="event.preventDefault(); addNewGameValidation()">
                         <div class="center-items">
@@ -67,7 +67,7 @@
 
                             <div id="new-game-error-msg"></div>
 
-                            <button type="submit" class="btn btn-rectangular" data-type="form">Start</button> 
+                            <button type="submit" class="btn btn-rectangular" data-type="form" aria-label="Click to start the game">Start</button> 
                         </div>  
                     </form>
                      
@@ -76,39 +76,39 @@
             <!-- end of New Game modal-->
 
         <!-- Beginning of About modal-->
-        <div class="modal" id="about">
+        <div class="modal" id="about" aria-modal="true">
             <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent"><i class="fas fa-times"></i></button>
+                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close About modal"><i class="fas fa-times"></i></button>
 
-                <div class="about-content">
+                <div class="about-content" aria-labelled-by="about-darts-mode how-to-play about-add-players about-finish-game about-reset-score about-delete-players">
                     <h1>Welcome to score tracker</h1>
 
                     <p>This tracker is designed to be used to track your scores.</p>
 
-                    <h2>Darts mode</h2>
+                    <h2 id="about-darts-mode">Darts mode</h2>
                     <p>The most common way to play darts is to set an initial score of 301 or 501, and then remove points at each round until one player reaches zero.</p>
                     <p>For this reason, when enabled, the darts mode will subtract points instead of adding them, and the leaderboard will show the final score from the lower, to the higher.</p>
 
-                    <h2>How to play</h2>
+                    <h2 id="how-to-play">How to play</h2>
                     <p>Click on new game, and choose if you want to enable or disable <b>Darts mode</b>.</p>
                     <p>You will need to select an initial score, and you have the option to set a limit.<br>
                     If the limit is set, you will be prompted to finish the game when one player reaches or exceeds the limit.</p>
                     <p>If you enable darts mode the limit is automatically set to 0.</p>
                     <p>Click on start to begin.</p>
 
-                    <h2>Add Players</h2>
+                    <h2 id="about-add-players">Add Players</h2>
                     <p>Click on the Add players icon to start add each player.</p>
                     <p>You can select the name and the initial score will be automatically set based on the one set for the game.</p>
                     <p>You can edit each player's initial score when you add a new player, so that you can add players in the middle of the game, and choose for how many points they can start.</p>
 
-                    <h2>Finish game</h2>
+                    <h2 id="about-finish-game">Finish game</h2>
                     <p>If you click on the finish button, or if one of the players reaches the limit, you will be prompted to finish the game.</p>
                     <p>Click on finish to see the leaderboard and the winner of this round.</p>
 
-                    <h2>Reset score</h2>
+                    <h2 id="about-reset-score">Reset score</h2>
                     <p>If you want to start a new round you can click on <b>Reset score</b>, this will keep the players you have created, and will set the score for all players to the starting score chosen for the game.</p>
 
-                    <h2>Delete player</h2>
+                    <h2 id="about-delete-players">Delete players</h2>
                     <p>You can click on the delete button next to each player to remove them from the game.</p>
                 </div>             
             </div>
@@ -118,7 +118,7 @@
     <footer class="center-items">
         <ul class="display-inline">
             <li><a href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="www.linkedin.com/in/elisa-sacchelli" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
         </ul>
         <div id="powered">Powered by Elisa Sacchelli</div>
     </footer>
