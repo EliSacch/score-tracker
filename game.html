@@ -23,7 +23,7 @@
         <div class="small-logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
         <div class="menu">
             <ul class="display-inline">
-                <li><button class="btn menu-button" data-type="openAddPlayer" aria-label="Add a new player"><i class="fas fa-user-plus"></i></button></li>
+                <li><button id="add-player-btn" class="btn menu-button" data-type="openAddPlayer" aria-label="Add a new player"><i class="fas fa-user-plus"></i></button></li>
                 <li><button class="btn menu-button" data-type="openOptions" aria-label="Open Options"><i class="fas fa-cog"></i></button></li>
             </ul>
         </div>
@@ -170,7 +170,7 @@
         <div id="leaderboard" role="dialog" aria-modal="true">
             <div class="center-items">
                 
-                <button class="btn btn-close menu-button" data-type="closeLeaderboard" aria-label="Close Leaderboard"><i class="fas fa-times"></i></button>
+                <button id="close-leaderboard-btn" class="btn btn-close menu-button" data-type="closeLeaderboard" aria-label="Close Leaderboard"><i class="fas fa-times"></i></button>
                 <div>
                     <div id="ranking" area-label="leaderboard" role="region" tabindex="0"></div>
                 </div>

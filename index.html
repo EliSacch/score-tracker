@@ -22,9 +22,9 @@
         <div id="logo"><a href="index.html" aria-label="Logo - click to go to homepage">Score<b>TRACKER</b></a></div>
 
         <div class="actions center-items">
-            <button id="new-game" class="btn btn-rectangular" data-type="openNewGame" aria-label="New Game">New Game</button>
-            <button id="resume" class="btn btn-smaller btn-rectangular secondary-color" data-type="redirect" aria-label="Resume Previous Game">Resume</button>
-            <button class="btn btn-smaller btn-rectangular secondary-color" data-type="about" aria-label="About">About</button>
+            <button id="new-game" class="btn btn-rectangular background" data-type="openNewGame" aria-label="New Game">New Game</button>
+            <button id="resume" class="btn btn-smaller btn-rectangular secondary-color background" data-type="redirect" aria-label="Resume Previous Game">Resume</button>
+            <button class="btn btn-smaller btn-rectangular secondary-color background" data-type="about" aria-label="About">About</button>
         </div> 
     </div>
 
@@ -76,8 +76,8 @@
 
         <!-- Beginning of About modal-->
         <div class="modal" id="about" role="dialog" aria-modal="true">
-            <div class="modal-action-area center-items">
-                <button class="btn btn-close menu-button" data-type="hideParent" aria-label="Close About modal"><i class="fas fa-times"></i></button>
+            <div id="about-container" class="modal-action-area center-items">
+                <button id="about-close-btn" class="btn btn-close menu-button" data-type="hideParent" aria-label="Close About modal"><i class="fas fa-times"></i></button>
 
                 <div class="about-content" aria-labelled-by="about-darts-mode how-to-play about-add-players about-finish-game about-reset-score about-delete-players" role="region" tabindex="0">
                     <h1>Welcome to score tracker</h1>
@@ -116,8 +116,8 @@
 
     <footer class="center-items">
         <ul class="display-inline">
-            <li><a href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li>
-            <li><a href="www.linkedin.com/in/elisa-sacchelli" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
+            <li><a class="background" href="https://github.com/EliSacch/" aria-label="Go to GitHub(opens in a new tab)" target="_blank" rel="noopener" focusable="false"><i class="fa fa-github"></i></a></li>
+            <li><a class="background" href="www.linkedin.com/in/elisa-sacchelli" aria-label="Go to LinkedIn(opens in a new tab)" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a></li>
         </ul>
         <div id="powered">Powered by Elisa Sacchelli</div>
     </footer>

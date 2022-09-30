@@ -100,6 +100,53 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem('globalInitialScore', 0); 
     }
 
+/*MODAL TAB ACCESSIBILITY*/
+
+const exitKey = {
+    ESC: 27
+};
+
+let previousActiveElement;
+const modals = document.getElementsByClassName('modal');
+
+/** This function closes the modal if ESC key is pressed */
+function closeModalEsc() {
+    previousActiveElement = document.activeElement; 
+    document.addEventListener('keydown', exitPressed);
+    }
+
+function exitPressed(e) { 
+    if(e.keyCode == exitKey.ESC) {
+       for(let modal of modals) {
+        previousActiveElement.focus();
+        hideParent(modal);
+       }    
+    }
+}   
+
+for(let modal of modals) {
+    modal.addEventListener("keydown", function(event) {
+        if(event.key.toLowerCase() == "tab") {
+            let focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            let target = event.target;
+
+            let last = (focusableElements.length)-1;
+
+            if(event.shiftKey) {
+                if(target == focusableElements[0]) {
+                    event.preventDefault();
+                    focusableElements[last].focus();
+                }
+            } else {
+                if(target == focusableElements[last]) {
+                    event.preventDefault();
+                    focusableElements[0].focus();
+                }
+            }
+        }
+    });
+}   
+
 /* ACTION SPECIFIC FUNCTION */
 
 /** This function toggled darts mode */
@@ -127,6 +174,7 @@ function toggleMode() {
 function openAbout() {
     const modal = document.getElementById('about');
     modal.style.display = "block";
+    closeModalEsc();
     document.getElementById('about').focus();
 }           
 
@@ -134,6 +182,7 @@ function openAbout() {
 function openOptions() {
     const modal = document.getElementById('options');
     modal.style.display = "block";
+    closeModalEsc();
     document.getElementById('new-game-btn').focus();
 }
 /**
@@ -221,6 +270,7 @@ function openNewGame() {
             limitLabel.style.display="block";
         }
     modal.style.display = "block";
+    closeModalEsc();
     document.getElementById('darts-mode').focus();
 }
 
@@ -273,6 +323,7 @@ function openAddPlayer() {
     const intialValue = document.getElementById('initial-score');
     intialValue.value = localStorage.getItem('globalInitialScore');
     modal.style.display = "block";
+    closeModalEsc();
     document.getElementById('username').focus();
 }
 
@@ -372,6 +423,7 @@ function displayPlayers() {
              }
         }
         toggleEmptyDivPlaceholder();
+        document.getElementById('add-player-btn').focus();
     }
 
 /**
@@ -450,6 +502,7 @@ if(targetScore != "null") {
 function finishGameAlert() {
     const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
+    closeModalEsc();
     document.getElementById('finish-btn').focus();
 }
 
@@ -503,6 +556,7 @@ function showRanking() {
         `;
         ranking.appendChild(newDiv);
     } 
+    document.getElementById('close-leaderboard-btn').focus();
 }
 
 /** This function clears the leaderboard when we close it */
