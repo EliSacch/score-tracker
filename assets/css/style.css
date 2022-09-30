@@ -80,6 +80,7 @@ body {
     background-color: transparent;
     color: inherit;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .btn-smaller {
@@ -312,28 +313,37 @@ width: 100%;
     box-shadow: 0 0 5px 1px;
 }
 
-#players input + button {
-    background-color: var(--dark-color);
-    width: 20px;
-    height: 20px;
-    --color: white;
+.add-points, 
+.remove-points {
+    --color: var(--neutral-color);
+    background-color: var(--color);
+    opacity: .99;
+    color: var(--dark-color);
+    font-size: 1.3em;
+    font-weight: 900;
+    line-height: 15px;
+    padding: .2em;
+    height: 1.5em;
+    aspect-ratio: 1/1;
     border: 1px solid var(--color);
-    box-shadow: 
-    0 0 0 4px var(--dark-color),
-    0 0 0 5px var(--color)
-    ;
-    border-radius: 50%;
-    color: var(--neutral-color);
+    border-radius: 45px 0px 0px 45px;
+    cursor: pointer;
 }
 
-#players  input + button:hover,
-#players  input + button:focus {
-    --color: var(--neutral-color);
-    box-shadow: 0 0 0 3px var(--color);
+.remove-points {
+    border-radius: 0px 45px 45px 0px;
+    margin-left: -10px;
 }
+
+.add-points:hover, 
+.remove-points:hover,
+.add-points:focus, 
+.remove-points:focus {
+    opacity: .7;
+}
+
 
 /*score area*/
-
 #score-area {
     font-size: 1.3rem;
     width: 100%;
@@ -552,6 +562,7 @@ font-size: 1.2rem;
     background-color: var(--neutral-color);
     color: var(--dark-color);
     padding: .5em;
+    border-radius: 3px;
 }
 
 .players-rank {

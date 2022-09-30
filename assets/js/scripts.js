@@ -389,14 +389,7 @@ function displayPlayers() {
                 let username = player.name;
                 let score = player.score;
                 let playerPosition = existingPlayers.indexOf(player);
-                let operand = "+";
-                let operation = "addition";
-                if(isDartsMode == "true") {
-                    operand="-";
-                    operation = "subtraction";
-                }
 
-            
                 //create HTML for the players areas
                 const newDiv = document.createElement('div');
                 newDiv.classList.add("display-inline");
@@ -411,7 +404,8 @@ function displayPlayers() {
                     max="10000"
                     pattern="([-])+([0-9]{0,4})"
                     id="points${playerPosition}">
-                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, '${operation}')">${operand}</button>
+                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, 'addition')">+</button>
+                    <button title="Add points" class="remove-points" onclick="updateScore(${playerPosition}, 'subtraction')">-</button>
                 </div>
                 `;
                 displayArea.appendChild(newDiv);
