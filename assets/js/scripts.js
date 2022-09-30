@@ -5,7 +5,7 @@
  */
 document.addEventListener("DOMContentLoaded", function() {  
     /* The following code was taken from the Code Institute course content.*/
-    let buttons = document.getElementsByTagName('button');
+    const buttons = document.getElementsByTagName('button');
     for(let button of buttons ) {
         button.addEventListener("click", function() {
             let buttonAction = this.getAttribute("data-type");
@@ -72,21 +72,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const isDartsMode = localStorage.getItem('dartsMode');
     const resumeButton = document.getElementById('resume');
     if (isDartsMode == null) {
-        resumeButton.setAttribute("disabled","true");
+        resumeButton.setAttribute("disabled","disabled");
+    }
+
+    /*Check if there is any player and disable finish button if there is no player*/
+    const finishButton = document.getElementById('finish-btn-main');
+    if (playersArray == "[]" && finishButton != null) {
+        finishButton.setAttribute("disabled","true");
     }
 
     /*display target on screen*/
     const limit = localStorage.getItem('limit');
     const displayTarget = document.getElementById('target');
-    if((limit == "null")&&(isDartsMode == "true")) {
-        displayTarget.innerHTML = "As low as possible";
-    } else if((limit == "null")&&(isDartsMode == "false")) {
-        displayTarget.innerHTML = "As high as possible";
-    } else {
-        displayTarget.innerHTML = limit;
+    if(displayTarget != null) {
+        if((limit == "null")&&(isDartsMode == "true")) {
+            displayTarget.innerHTML = "As low as possible";
+        } else if((limit == "null")&&(isDartsMode == "false")) {
+            displayTarget.innerHTML = "As high as possible";
+        } else {
+            displayTarget.innerHTML = limit;
+        }
     }
-
 });
+
 
     /* INITIALIZE LOCAL STORAGE */
     const playersArray = localStorage.getItem('playersArray');
@@ -394,7 +402,7 @@ function displayPlayers() {
                 newDiv.classList.add("display-inline");
                 
                 newDiv.innerHTML = `
-                <button class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
+                <button title="Click to Remove this player" class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
                 <div class="display-name">${username}</div>
                 <div class="display-inline player-line">
                     <input class="restrict-input"
@@ -403,7 +411,7 @@ function displayPlayers() {
                     max="10000"
                     pattern="([-])+([0-9]{0,4})"
                     id="points${playerPosition}">
-                    <button class="add-points" onclick="updateScore(${playerPosition}, '${operation}')">${operand}</button>
+                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, '${operation}')">${operand}</button>
                 </div>
                 `;
                 displayArea.appendChild(newDiv);
@@ -423,7 +431,10 @@ function displayPlayers() {
              }
         }
         toggleEmptyDivPlaceholder();
-        document.getElementById('add-player-btn').focus();
+        let addPlayerButton = document.getElementById('add-player-btn');
+        if(addPlayerButton != null) {
+            addPlayerButton.focus();
+        }
     }
 
 /**

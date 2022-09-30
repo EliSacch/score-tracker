@@ -118,19 +118,31 @@ button.btn-rectangular:hover,
 
 /*landing page */
 
-#resume:disabled {
+#resume:disabled,
+#finish-btn-main:disabled {
     opacity: .8;
+}
+
+#finish-btn-main:disabled {
+    border: 1px solid white;
+}
+
+#resume:disabled:hover,
+#resume:disabled:focus,
+#finish-btn-main:disabled:hover,
+#finish-btn-main:disabled:focus {
+    background-color: var(--dark-color);
+    color: var(--neutral-color);
+    font-weight: normal;
 }
 
 #resume:disabled:hover,
 #resume:disabled:focus {
-    background-color: var(--dark-color);
-    color: var(--neutral-color);
-    font-weight: normal;
     border: 1px solid white;
     box-shadow: 
     0 0 0 4px var(--dark-color),
     0 0 0 5px white
+
 }
 
 .actions {
@@ -343,13 +355,13 @@ width: 100%;
 .finish {
     font-size: 1.2rem;
     padding: .5em;
-    border: 2px solid rgb(235, 57, 57);
+    border: 2px solid var(--secondary-color);
     border-radius: 3px;
 }
 
 .finish:hover,
 .finish:focus {
-    background-color: rgb(255, 0, 30);
+    background-color: var(--secondary-color);
     color: var(--dark-color);
 }
 
