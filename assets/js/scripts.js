@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /*Check if a new game has been initiated and disable resume button if there is no game*/
     const isDartsMode = localStorage.getItem('dartsMode');
     const resumeButton = document.getElementById('resume');
-    if (isDartsMode == null) {
+    if (isDartsMode == null && resumeButton != null ) {
         resumeButton.setAttribute("disabled","disabled");
     }
 
@@ -90,23 +90,27 @@ document.addEventListener("DOMContentLoaded", function() {
             displayTarget.innerHTML = limit;
         }
     }
+
+    let isGamePage = (window.location.href.indexOf('game')) != -1;
+    if(isGamePage && (isDartsMode == null)) {
+    location.href='index.html';
+}
 });
 
+/* INITIALIZE LOCAL STORAGE */
+const playersArray = localStorage.getItem('playersArray');
+const emptyArray = new Array();
+if(playersArray === null) {
+    localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
+}
 
-    /* INITIALIZE LOCAL STORAGE */
-    const playersArray = localStorage.getItem('playersArray');
-    const emptyArray = new Array();
-    if(playersArray === null) {
-        localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
-    }
-    
-    let globalInitialScore = localStorage.getItem('globalInitialScore');
-    if(globalInitialScore === null) {
-        localStorage.setItem('globalInitialScore', 0); 
-    }
+/* REDIRECT TO HOME PAGE IF THERE IS NO GAME OPEN GAME*/
+let globalInitialScore = localStorage.getItem('globalInitialScore');
+if(globalInitialScore === null) {
+    localStorage.setItem('globalInitialScore', 0); 
+}
 
 /*MODAL TAB ACCESSIBILITY*/
-
 const exitKey = {
     ESC: 27
 };
