@@ -278,6 +278,7 @@ header {
 .player-row {
     position: relative;
     isolation: isolate;
+    overflow: hidden;
 }
 
 .remove-player-confirmation {
@@ -285,10 +286,11 @@ header {
     background-color:var(--dark-color);
     color: var(--neutral-color);
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
-    z-index: 2s;
+    width: 100%;
+    height: 100%;
+    transform: translateX(0%);
+    z-index: 2;
     display: none;
 }
 

@@ -487,7 +487,9 @@ function displayPlayers() {
 function openRemoveConfirmation(button) {
     const element = button.parentNode.querySelector('.remove-player-confirmation');
     if(element != null) {
+        element.classList.remove('inactive');
         element.style.display = "block";
+        element.classList.add('active');
         element.querySelector('.first-btn').focus();
     }
 }
@@ -496,7 +498,11 @@ function openRemoveConfirmation(button) {
 function closeRemoveConfirmation(button) {
     const element = button.parentNode.parentNode.querySelector('.remove-player-confirmation');
     if(element != null) {
-        element.style.display = "none";
+        element.classList.remove('active');
+        element.classList.add('inactive');
+        setTimeout(function() {
+            element.style.display = "none";
+        }, 300);
     }
 }
 
