@@ -46,7 +46,6 @@ body {
     color: var(--neutral-color);
     font-size: 3rem;
     font-family: var(--basic-font);
-    overflow-y: hidden;
 }
 
 .content {
