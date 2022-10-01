@@ -46,6 +46,7 @@ body {
     color: var(--neutral-color);
     font-size: 3rem;
     font-family: var(--basic-font);
+    overflow-y: hidden;
 }
 
 .content {
@@ -450,7 +451,6 @@ width: 100%;
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
-
     font-size: 1.5rem;
     min-height: 50%;
     max-height: 90%;

@@ -46,8 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     finalScore();
                     break;
                 case "closeLeaderboard":
-                    hideParent(button.parentNode.parentNode);
-                    clearLeaderboard();
+                    closeLeaderboard(button);
                     break; 
                 default:
                     throw `Action ${buttonAction} not recognized`;
@@ -188,6 +187,9 @@ function openAbout() {
     const modal = document.getElementById('about');
     modal.style.display = "block";
     closeModalEsc();
+    element = modal.getElementsByClassName('modal-action-area')[0];
+    element.classList.remove('inactive');
+    element.classList.add('active');
     document.getElementById('about').focus();
 }           
 
@@ -196,6 +198,9 @@ function openOptions() {
     const modal = document.getElementById('options');
     modal.style.display = "block";
     closeModalEsc();
+    element = modal.getElementsByClassName('modal-action-area')[0];
+    element.classList.remove('inactive');
+    element.classList.add('active');
     document.getElementById('new-game-btn').focus();
 }
 /**
@@ -203,7 +208,17 @@ function openOptions() {
  * @param {DOMElement} parent 
  */
 function hideParent(parent) {
-    parent.style.display = "none";
+    let element = parent.getElementsByClassName('modal-action-area')[0];
+    if(element != null) {
+        element.classList.remove('active');
+        element.classList.add('inactive');
+        setTimeout(function() {
+            parent.style.display = "none";
+        }, 500);
+    } else {
+        parent.style.display = "none";
+    }
+    
 }
 
 /**
@@ -284,6 +299,9 @@ function openNewGame() {
         }
     modal.style.display = "block";
     closeModalEsc();
+    element = modal.getElementsByClassName('modal-action-area')[0];
+    element.classList.remove('inactive');
+    element.classList.add('active');
     document.getElementById('darts-mode').focus();
 }
 
@@ -337,6 +355,9 @@ function openAddPlayer() {
     intialValue.value = localStorage.getItem('globalInitialScore');
     modal.style.display = "block";
     closeModalEsc();
+    element = modal.getElementsByClassName('modal-action-area')[0];
+    element.classList.remove('inactive');
+    element.classList.add('active');
     document.getElementById('username').focus();
 }
 
@@ -556,6 +577,9 @@ function finishGameAlert() {
     const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
     closeModalEsc();
+    element = promptFinish.getElementsByClassName('modal-action-area')[0];
+    element.classList.remove('inactive');
+    element.classList.add('active');
     document.getElementById('finish-btn').focus();
 }
 
@@ -590,7 +614,9 @@ function showRanking() {
     const promptFinish = document.getElementById('prompt-finish');
     const leaderboard = document.getElementById('leaderboard');
     promptFinish.style.display = "none";
+    leaderboard.classList.remove('inactive');
     leaderboard.style.display = "block";
+    leaderboard.classList.add('active');
     const finalRanking = JSON.parse(localStorage.getItem('finalRanking'));
     const ranking = document.getElementById('ranking');
     for(let player of finalRanking) {
@@ -612,6 +638,16 @@ function showRanking() {
     } 
     closeModalEsc();
     document.getElementById('close-leaderboard-btn').focus();
+}
+
+function closeLeaderboard(button) {
+    const leaderboard = document.getElementById('leaderboard');
+    leaderboard.classList.remove('active');
+    leaderboard.classList.add('inactive');
+    setTimeout(function() {
+        hideParent(button.parentNode.parentNode);
+        clearLeaderboard();
+    }, 500); 
 }
 
 /** This function clears the leaderboard when we close it */

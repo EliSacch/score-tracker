@@ -1,0 +1,90 @@
+:root {
+    /* color scheme */
+    --primary-color: hsl(139, 51%, 42%);
+    --secondary-color: hsl(341, 98%, 56%);
+    --dark-color: hsl(0, 2%, 16%);
+    --neutral-color: hsl(38, 89%, 86%);
+
+    /* fonts */
+    --basic-font: 'Quicksand', sans-serif;
+}
+
+/*General*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*modals animation*/
+.modal-action-area.active {
+    animation: slideIn 1s ease forwards;
+}
+
+.modal-action-area.inactive {
+    animation: slideOut 1s ease forwards;
+}
+
+#leaderboard.active {
+    animation: slideUp 1s ease forwards;
+}
+
+#leaderboard.inactive {
+    animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideIn {
+    0% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.5);
+    }
+    50% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes slideOut {
+    0% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.5);
+    }
+}
+
+@keyframes slideUp {
+    0% { 
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    50% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+@keyframes slideDown {
+    0% { 
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    50% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
