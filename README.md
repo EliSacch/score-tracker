@@ -7,9 +7,9 @@ Score TRACKER is the solution.
 
 A simple and intiuitive design, easy to use for your games.
 
-![Responsice Mockup]()
+![Responsive Mockup](media/am-i-responsive.png)
 
-[See deployed website]()
+[See deployed website](https://elisacch.github.io/score-tracker/index.html)
 
 ## Table of content
 
@@ -21,9 +21,7 @@ A simple and intiuitive design, easy to use for your games.
 - [Features](#features)
   - [Landing Page](#landing-page)
   - [Game Page](#game-page)
-  - [Add Player](#add-player)
-  - [Options](#option)
-  - [Final Score Page](#final-score)
+  - [Leaderboard](#leaderboard)
 
 - [Testing](#testing)
   - [Tests](#tests)
@@ -69,12 +67,14 @@ The design is based on the "Darts" game, which inspired this webpage.
 
 - As website owner I want:
     - To have an engaging design to catch the users attention.
-    - That users are prompt to share the website with their friends.
+    - That the website is accessible for all users.
 
 - As a user I want:
     - To easily understand the purpose of the website.
     - To have a clear navigation.
-    - To have the option to ammend the score if I made a mistake.
+    - That the design is responsive for mobile, so that I can have it always with me when I go out playing.
+    - To easily add or remove points with one click.
+    - To have a leaderboard where I can see the winner and ranking.
     - To be able to restart the game without having to re-enter all the players name.
 
 ### Wireframes
@@ -100,32 +100,182 @@ The design is based on the "Darts" game, which inspired this webpage.
 
 ### Landing page
 
+The landing page is designed to fit in all mobile screens.
+
+![Mobile landing page](media/landing-page-mobile.png)
+
 - __New game__
 
-- __Options__
+There are two game modes, and the player can easily switch between the two when starting the game, and decide which mode suits better.
+
+    - Darts Mode enabled: 
+      - The goal is to reach 0 poins, and the user should select an initial score higher than zero. 
+      - This is usually set to 501 or 301, so when enableing darts mode, the initial value will be set to 501, but the player can change it easily.
+      - The limit will be set automatically to zero. If one player reaches or exceeded 0 then the game will prompt to finish the game and open the leaderboard.
+
+    - Darts Mode disabled:
+      - The goal is to reach the higher score.
+      - The initial value will be set to 0, but the players can decide to change it for another value.
+      - There is an option to set a limit score. If set the leamit will prompt the players to finish the game when reached. If not set the players will be able to finish the game manually.
+
+![New Game Darts Mode](media/new-game-darts-enabled.png) ![New Game Darts Mode](media/new-game-darts-disabled.png)
+
+The players can click on "Start" to begin the game or they can exit the modal.
+
+- __Resume__
+
+The resume button is disabled if there is no open game, and it will be enabled if the player starts a game, so that the user can go back to the game at any time.
+
+- __About__
+
+This button opens up a modal with an explaination of the functionalities and the two modes available. 
+<details>
+  <summary>See preview</summary>
+
+   ![About Modal](media/about-modal.png) 
+
+</details>
 
 - __Social media links__
+
+Social media links to find the site owner ( me! :) ) on gitHub and linkedIn on see my other projects:    
+![Footer](media/social-media.png) 
+
 
 
 ### Game Page
 
-- __New player__
+When we create a new game we are redirected to the game page, where the user can add players and manage the game.
+
+When the game starts there are no players, so the page will inform the user to add one player to start.
+
+When at least on eplayer is added, the placeholder image and text disappear and we see the input to add or remove points, and the updated score for each player.
+
+![Game Page with no players](media/game-page-no-players.png) ![Game Page with players](media/game-page-with-players.png) 
+
+- __Header__
+
+The header contains 3 action buttons:
+
+    - Logo, that will redirect to the homepage.
+    - Add Player button.
+    - Options button.
+
+- __Add player__
+
+The user can add the playes by clicking on this icon.
+
+A modal will open to enter the name of the player, and the initial score set for the game will be displayed. 
+
+The user can decide to change the initial score, for example if a player need to be added in the middle of the game, or to re-enter a player deleted by accident.
+
+<details>
+  <summary>See preview</summary>
+
+   ![Add player](media/add-player-initial-score.png) 
+
+</details>
 
 - __Options__
 
-- __Ad score section__ 
+This button will open a modal that contains the two following commands:
 
-- __Total score__
+    - New game, which will open the "New Game" modal as in the landing page. It allows the users to create a new game, deleting the players, setting a new initial score and selecting the game type (Darts or not).
 
-- __Finish game__
+    - Reset score, which will keep all the players and the current mode, but will set all the scores to the initial value set for the game.
+
+<details>
+  <summary>See preview</summary>
+
+   ![Options](media/options.png) 
+
+</details>
+
+- __Target section__ 
+
+This section is meant as reminder of the target score. 
+
+It is initially set to 0, if the game is in Darts mode, or to the limit value set by the user for the current game.
+
+If no limit is set, this section will indicate if the target is the higher score or the lower score, based on the game type. For example if the darts mode is disabled, the target will be to reached the higher score possible.
 
 
-### Add player
+![Options](media/target.png) 
 
-### Options
+- __Players section__ 
 
-### Final score page
+This section is the core of the website. It allows to add and removes points to each player.
 
+The user needs just to enter the points in the input associated to the desired players, and click to plus or minus sign to add or remove these points from the total.
+
+![Players section](media/players-v2.png) 
+
+This section was initially designed to have only one button which was performing a different oparation based on the game type.
+
+    - For Darts Mode, it contained a minus sign (-), and the points were subtracted from the total.
+    - For Non-darts Mode, it contained a plus sign (+), and it was adding the points to the total.
+
+This approach was confusing for the users, who have found it difficult to understand. For this reason the second button was introduced, so that the user can easily add or remove points in one click.
+
+
+<details>
+  <summary>See the two verisons compared</summary>
+
+   ![Single button](media/single-button.png)  ![Double buttons](media/double-buttons.png) 
+
+</details>
+
+- __Remove players__ 
+
+Next to each player there is a button that can be used to remove the player from the game.
+![Remove player button](media/remove-x.png)  
+
+It will open a new filed that asks confirmation before deleting one player.
+This was added to prevent the users from deleting one player unintentionally.
+
+![Remove player confirmation](media/remove-confirmation.png) 
+
+- __Scores section__
+
+This section shows the updated score for each player
+
+![Scores section](media/scores.png)
+
+- __Finish game modal__
+
+If one player reaches or exceeds the target (if set), then the system will open a pop-up to inform the players and ask them if they want to finish the game.
+
+If the users select finish, they will be redirected to see the leaderboard.
+
+If they select no the pop-up will close and they can continue the game.
+In this case the limit will be removed, to avoid the pop-up to open each time they add or remove points.
+
+<details>
+  <summary>See preview</summary>
+
+   ![Finish game modal](media/finish-prompt.png)  
+
+</details>
+
+
+- __Finish game button__
+
+This button can be used to show the leaderboard at any time during the game.
+
+It will be disabled if there are no players added and enabled if there is as low as 1 player.
+
+![Finish button](media/finish-btn.png)  
+
+### Leaderboard
+
+This page shows the leaderboard, and the winner highlighted on the top.
+
+Depending on the game type (Darts mode or not), the ranking might be from the lower score to the higher, or viceversa.
+
+This page contains also the button to reset the scores directly, if the players want to start a new round, or they can simply exit and continue from where they left off.
+
+
+![Leaderboard](media/leaderboard.png)  
 
 ## Testing 
 
