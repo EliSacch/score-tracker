@@ -533,6 +533,7 @@ function updateScore(position, operation) {
 /*FINISH GAME FUNCTIONS*/
 const playersScores = JSON.parse(playersArray);
 const targetScore = localStorage.getItem('limit');
+const isDartsMode = localStorage.getItem('dartsMode');
 if(targetScore != "null") {
     for(let score of playersScores) {
         if(isDartsMode == "true") {
@@ -564,6 +565,7 @@ function removeLimit() {
 /** This function redirects to the rank page */
 function finalScore() {
     let sortedList = playersScores;
+    const isDartsMode = localStorage.getItem('dartsMode');
 
     /* Start of code from 'All Things JavaScript, LLC' */
     sortedList.sort(function(a,b) {
