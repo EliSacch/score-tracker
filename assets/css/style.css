@@ -87,6 +87,26 @@ body {
     font-size: 1.5rem;
 }
 
+.btn-remove-player {
+    --color: var(--primary-color);
+    background-color: var(--dark-color);
+    color: var(--color);
+    font-size: 1em;
+    padding: .3em;
+    border: 1px solid var(--color);
+    border-radius: 3px;
+}
+
+.btn-remove-player.secondary-color {
+    --color: var(--secondary-color);
+}
+
+.btn-remove-player:hover,
+.btn-remove-player:focus {
+    color: var(--dark-color);
+    background-color: var(--color);
+}
+
 .btn-rectangular {
     font-family: inherit;
     padding: .5em;
@@ -188,13 +208,19 @@ button.btn-rectangular:hover,
     height: fit-content;
 }
 
+#logo {
+    font-size: 2rem;
+}
+
 .small-logo {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 header {
     padding: .5em 0;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -202,8 +228,7 @@ header {
 
 .menu > ul {
     list-style: none;
-    gap: .25em;
-       
+    gap: .25em;     
 }
 
 .menu > ul > li {
@@ -247,6 +272,23 @@ header {
     font-weight: bold;
     display: flex;
     flex-direction: column;
+}
+
+.player-row {
+    position: relative;
+    isolation: isolate;
+}
+
+.remove-player-confirmation {
+    position: absolute;
+    background-color:var(--dark-color);
+    color: var(--neutral-color);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2s;
+    display: none;
 }
 
 .btn-remove {
@@ -342,7 +384,6 @@ width: 100%;
     opacity: .7;
 }
 
-
 /*score area*/
 #score-area {
     font-size: 1.3rem;
@@ -374,7 +415,6 @@ width: 100%;
     background-color: var(--secondary-color);
     color: var(--dark-color);
 }
-
 
 /* modals*/
 #about,
@@ -422,9 +462,7 @@ width: 100%;
     border-radius: 3px;
     box-shadow: 
     0 0 0 4px var(--dark-color),
-    0 0 0 5px white
-    ;
-    
+    0 0 0 5px white;
     background-color: var(--dark-color);
 }
 
@@ -532,7 +570,8 @@ font-size: 1.2rem;
     position: fixed;
     top: 0;
     height: 100%;
-    width: 90%;
+    width: 100%;
+    max-width: 1200px;
     isolation: isolate;
     align-items: center;
     justify-content: center;
@@ -545,12 +584,18 @@ font-size: 1.2rem;
     margin: 0 auto;
 }
 
+#leaderboard button.btn-rectangular {
+    font-size: 1.3rem;
+    margin-top: 80px;
+}
+
 #ranking {
     height: 100%;
     margin: 0 auto;
     font-size: 1.3rem;
     text-align: left;
 }
+
 #ranking div {
     margin: 0 auto;
     max-width: 90%;

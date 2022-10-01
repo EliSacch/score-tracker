@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     openAbout();
                     break;
                 case "form":
-                    //the action here is andled when submitting form
+                    //the action here is handled when submitting form
                     break;
                 case "openNewGame":
                     openNewGame();
@@ -116,6 +116,7 @@ const exitKey = {
 
 let previousActiveElement;
 const modals = document.getElementsByClassName('modal');
+const leaderboard = document.getElementById('leaderboard');
 
 /** This function closes the modal if ESC key is pressed */
 function closeModalEsc() {
@@ -128,7 +129,10 @@ function exitPressed(e) {
        for(let modal of modals) {
         previousActiveElement.focus();
         hideParent(modal);
-       }    
+       }  
+       if(leaderboard != null) {
+        hideParent(leaderboard);
+       } 
     }
 }   
 
@@ -393,9 +397,9 @@ function displayPlayers() {
                 //create HTML for the players areas
                 const newDiv = document.createElement('div');
                 newDiv.classList.add("display-inline");
-                
+                newDiv.classList.add("player-row");
                 newDiv.innerHTML = `
-                <button title="Click to Remove this player" class="btn-remove" onclick="removePlayer(${playerPosition});"><i class="fas fa-times"></i></button>
+                <button title="Click to Remove this player" class="btn-remove" data-type="openRemoveConfirmation"><i class="fas fa-times"></i></button>
                 <div class="display-name">${username}</div>
                 <div class="display-inline player-line">
                     <input class="restrict-input"
@@ -404,11 +408,35 @@ function displayPlayers() {
                     max="10000"
                     pattern="([-])+([0-9]{0,4})"
                     id="points${playerPosition}">
-                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, 'addition')">+</button>
-                    <button title="Add points" class="remove-points" onclick="updateScore(${playerPosition}, 'subtraction')">-</button>
+                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, 'addition')" data-type="none">+</button>
+                    <button title="Remove points" class="remove-points" onclick="updateScore(${playerPosition}, 'subtraction')" data-type="none">-</button>
+                </div>
+                <div class="remove-player-confirmation display-inline">
+                    <span> Remove ${username}?</span>
+                    <button title="Click to remove this player" class="btn-remove-player"  onclick="removePlayer(${playerPosition});" data-type="none">Yes</button>
+                    <button title="Click to exit" class="btn-remove-player secondary-color" data-type="closeRemoveConfirmation">No</button>
                 </div>
                 `;
                 displayArea.appendChild(newDiv);
+
+                const buttons = document.getElementsByTagName('button');
+                for(let button of buttons ) {
+                    button.addEventListener("click", function() {
+                        let buttonAction = this.getAttribute("data-type");
+                        switch (buttonAction) { 
+                            case "openRemoveConfirmation":
+                                openRemoveConfirmation(button);
+                                break;
+                            case "closeRemoveConfirmation":
+                                closeRemoveConfirmation(button);
+                                break;
+                            case "none":
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                }
          
                 //create HTML for the scores area
                 const scoreDiv = document.createElement('div');
@@ -431,8 +459,25 @@ function displayPlayers() {
         }
     }
 
+
+/** This function opens the remove player confirmation field */
+function openRemoveConfirmation(button) {
+    const element = button.parentNode.querySelector('.remove-player-confirmation');
+    if(element != null) {
+        element.style.display = "block";
+    }
+}
+
+/** This function closes the remove player confirmation field */
+function closeRemoveConfirmation(button) {
+    const element = button.parentNode.parentNode.querySelector('.remove-player-confirmation');
+    if(element != null) {
+        element.style.display = "none";
+    }
+}
+
 /**
- * This function removed players from local storage and then reloads page to update display area
+ * This function removes players from local storage and then reloads page to update display area
  */
 function removePlayer(position) {
     const existingPlayers = JSON.parse(playersArray);
@@ -488,7 +533,6 @@ function updateScore(position, operation) {
 /*FINISH GAME FUNCTIONS*/
 const playersScores = JSON.parse(playersArray);
 const targetScore = localStorage.getItem('limit');
-const isDartsMode = localStorage.getItem('dartsMode');
 if(targetScore != "null") {
     for(let score of playersScores) {
         if(isDartsMode == "true") {
@@ -561,6 +605,7 @@ function showRanking() {
         `;
         ranking.appendChild(newDiv);
     } 
+    closeModalEsc();
     document.getElementById('close-leaderboard-btn').focus();
 }
 
