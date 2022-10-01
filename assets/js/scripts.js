@@ -42,9 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 case "resetScore":
                     resetScore();
                     break;
-                case "finishGameAlert":
-                    finishGameAlert();
-                    break;
                 case "finalScore":
                     finalScore();
                     break;
@@ -399,7 +396,7 @@ function displayPlayers() {
                 newDiv.classList.add("display-inline");
                 newDiv.classList.add("player-row");
                 newDiv.innerHTML = `
-                <button title="Click to Remove this player" class="btn-remove" data-type="openRemoveConfirmation"><i class="fas fa-times"></i></button>
+                <button title="Remove player button" class="btn-remove" data-type="openRemoveConfirmation"><i class="fas fa-times"></i></button>
                 <div class="display-name">${username}</div>
                 <div class="display-inline player-line">
                     <input class="restrict-input"
@@ -407,13 +404,14 @@ function displayPlayers() {
                     min="-10000" 
                     max="10000"
                     pattern="([-])+([0-9]{0,4})"
-                    id="points${playerPosition}">
-                    <button title="Add points" class="add-points" onclick="updateScore(${playerPosition}, 'addition')" data-type="none">+</button>
-                    <button title="Remove points" class="remove-points" onclick="updateScore(${playerPosition}, 'subtraction')" data-type="none">-</button>
+                    id="points${playerPosition}"
+                    aria-label="Points input">
+                    <button title="Add points" aria-label="Click to add points" class="add-points" onclick="updateScore(${playerPosition}, 'addition')" data-type="none">+</button>
+                    <button title="Remove points" aria-label="Click to remove points" class="remove-points" onclick="updateScore(${playerPosition}, 'subtraction')" data-type="none">-</button>
                 </div>
                 <div class="remove-player-confirmation display-inline">
                     <span> Remove ${username}?</span>
-                    <button title="Click to remove this player" class="btn-remove-player"  onclick="removePlayer(${playerPosition});" data-type="none">Yes</button>
+                    <button title="Click to remove this player" class="btn-remove-player first-btn" onclick="removePlayer(${playerPosition})">Yes</button>
                     <button title="Click to exit" class="btn-remove-player secondary-color" data-type="closeRemoveConfirmation">No</button>
                 </div>
                 `;
@@ -465,6 +463,7 @@ function openRemoveConfirmation(button) {
     const element = button.parentNode.querySelector('.remove-player-confirmation');
     if(element != null) {
         element.style.display = "block";
+        element.querySelector('.first-btn').focus();
     }
 }
 
@@ -532,7 +531,7 @@ function updateScore(position, operation) {
 
 /*FINISH GAME FUNCTIONS*/
 const playersScores = JSON.parse(playersArray);
-const targetScore = localStorage.getItem('limit');
+const targetScore = parseInt(localStorage.getItem('limit'));
 const isDartsMode = localStorage.getItem('dartsMode');
 if(targetScore != "null") {
     for(let score of playersScores) {
