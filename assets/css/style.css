@@ -277,7 +277,6 @@ header {
 .player-row {
     position: relative;
     isolation: isolate;
-    overflow: hidden;
 }
 
 .remove-player-confirmation {
@@ -640,6 +639,30 @@ li a:focus > i {
 
 #powered {
     font-size: 1rem;
-    margin: 5px
+    margin: 5px;
 }
 
+@media screen and (max-width: 400px) {
+
+    body {
+        overflow-x: scroll;
+    }
+
+    #players > div div:nth-child(2) {
+     padding: 0 5px;
+    }
+
+    .player-row {
+        margin: 0 auto;
+        gap: .5em;
+        overflow-x: visible;
+    }
+
+    .player-line > input {
+        max-width: 80px;
+    }
+
+    .player-line > button {
+        height: 1.3em;
+    }
+  }
