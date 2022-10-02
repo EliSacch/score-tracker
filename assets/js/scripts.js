@@ -363,21 +363,28 @@ function openAddPlayer() {
 
 /** Form validation for new player*/
 function addPlayerValidation() {
-    const errorMsg = document.getElementById('modal-error-msg');
-        const addPlayerName = document.getElementById('username').value;
-        const initialScore = document.getElementById('initial-score').value;
-        const newPlayerForm = document.getElementById('new-player-form');
+    const limit = parseInt(localStorage.getItem('limit'));
+    const isDartsMode = localStorage.getItem('dartsMode');
 
-        if(addPlayerName === "") {
-            errorMsg.innerHTML = "Please, enter a name.";
-        } else if(addPlayerName.length < 2) {
-            errorMsg.innerHTML = "Please, enter at least 2 characters.";
-        } else if(initialScore < -10000 || initialScore > 10000) {
-            errorMsg.innerHTML = "Initial Score is out of range. Min: -10000, Max: 10000";
-        } else {
-            addPlayer();
-            newPlayerForm.submit();
-        }
+    const errorMsg = document.getElementById('modal-error-msg');
+    const addPlayerName = document.getElementById('username').value;
+    const initialScore = document.getElementById('initial-score').value;
+    const newPlayerForm = document.getElementById('new-player-form');
+
+    if(addPlayerName === "") {
+        errorMsg.innerHTML = "Please, enter a name.";
+    } else if(addPlayerName.length < 2) {
+        errorMsg.innerHTML = "Please, enter at least 2 characters.";
+    } else if(initialScore < -10000 || initialScore > 10000) {
+        errorMsg.innerHTML = "Initial Score is out of range. Min: -10000, Max: 10000";
+    } else if((limit != null) && (isDartsMode == "true") && (initialScore <= 0)) {
+        errorMsg.innerHTML = "Initial Score should be higher than 0";
+    } else if((limit != null) && (isDartsMode == "false") && (initialScore >= limit)) {
+        errorMsg.innerHTML = `Initial Score should be lower than ${limit}`;
+    }else {
+        addPlayer();
+        newPlayerForm.submit();
+    }
 } 
 
 

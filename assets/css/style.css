@@ -647,21 +647,17 @@ li a:focus > i {
     body {
         overflow-x: scroll;
     }
-
     #players > div div:nth-child(2) {
      padding: 0 5px;
     }
-
     .player-row {
         margin: 0 auto;
         gap: .5em;
         overflow-x: visible;
     }
-
     .player-line > input {
         max-width: 80px;
     }
-
     .player-line > button {
         height: 1.3em;
     }
