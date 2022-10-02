@@ -364,28 +364,39 @@ function openAddPlayer() {
 /** Form validation for new player*/
 function addPlayerValidation() {
     const limit = parseInt(localStorage.getItem('limit'));
-    const isDartsMode = localStorage.getItem('dartsMode');
+    const existingPlayers = JSON.parse(playersArray);
 
     const errorMsg = document.getElementById('modal-error-msg');
     const addPlayerName = document.getElementById('username').value;
     const initialScore = document.getElementById('initial-score').value;
     const newPlayerForm = document.getElementById('new-player-form');
 
+    let exists = false;
+    if(existingPlayers != "[]") {
+        for(let player of existingPlayers) {
+            if(addPlayerName == player.name) {
+                exists = true;
+            }
+        }
+    }
+
     if(addPlayerName === "") {
         errorMsg.innerHTML = "Please, enter a name.";
     } else if(addPlayerName.length < 2) {
         errorMsg.innerHTML = "Please, enter at least 2 characters.";
+    } else if(exists == true) {
+        errorMsg.innerHTML = "Player already exists";
     } else if(initialScore < -10000 || initialScore > 10000) {
         errorMsg.innerHTML = "Initial Score is out of range. Min: -10000, Max: 10000";
     } else if((limit != null) && (isDartsMode == "true") && (initialScore <= 0)) {
-        errorMsg.innerHTML = "Initial Score should be higher than 0";
+        errorMsg.innerHTML = "Initial Score should be greater than 0";
     } else if((limit != null) && (isDartsMode == "false") && (initialScore >= limit)) {
-        errorMsg.innerHTML = `Initial Score should be lower than ${limit}`;
-    }else {
+        errorMsg.innerHTML = `Initial Score should be less than ${limit}`;
+    } else {
         addPlayer();
         newPlayerForm.submit();
     }
-} 
+}
 
 
 /**
@@ -540,11 +551,9 @@ function updateScore(position, operation) {
         const points = document.getElementById(`points${position}`).value;
             if(isNaN(parseInt(points))) {
                 errorMsg.innerHTML = "Invalid value";
-                throw `Invalid value euntered`;
             } else {
                 if(points < -10000 || points > 10000) {
                     errorMsg.innerHTML = "Value out of range. Min -10000, Max 10000";
-                    throw `Value out of range minmax`;
                 } else {
                    let score = Number.parseInt(existingPlayers[position].score);
 
