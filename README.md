@@ -457,7 +457,7 @@ To test my website I have opened it on different devices, to see if it was worki
 
   <details>
 
-  <summary>W3 HTML validation screenshot</summary>
+  <summary>W3 - HTML validation screenshot</summary>
 
   ![Index](media/html-validation-index.png)
   ![Game](media/html-validation-game.png)
@@ -470,7 +470,7 @@ To test my website I have opened it on different devices, to see if it was worki
 
   <details>
 
-  <summary>W3 CSS validation screenshot</summary>
+  <summary>W3 - CSS validation screenshot</summary>
 
   ![Style](media/css-validation-main.png)
   ![Animations](media/css-validation-animations.png)
@@ -479,9 +479,17 @@ To test my website I have opened it on different devices, to see if it was worki
 
 #### JavaScript
 
-JsHint has been used during development to identify any possible issue. And they were all resolved if found.
+JsHint has been used during development to identify any possible issue and resolve them.
 
-  Errors found when passing the final version through the official [JsHint validator](https://jshint.com/)
+0 errors were found when passing the final version through the official [JsHint validator](https://jshint.com/), but only 4 warnings.
+
+ <details>
+  <summary>JsHint - JS validation screenshot</summary>
+
+  ![Js](media/js-validation.png)
+
+  </details>
+
 
 ### Fixed Bugs
 - Remove Players function:
@@ -511,25 +519,31 @@ JsHint has been used during development to identify any possible issue. And they
 
 ### Performance
 
-I have tested the performance in chrome, using lighthouse:
+I have tested the performance in Chrome, using Lighthouse:
 
 <details>
   <summary> Mobile </summary>
   
-  - Home page:
+  - Homepage:
 
-   ![Mobile - home page]()
+   ![Mobile - Homepage](media/performance-index-mobile.png)
 
+  - Game page:
+
+   ![Mobile - Game page](media/performance-game-mobile.png)
 
 </details>
 
 <details>
   <summary> Desktop </summary>
   
-  - Home page:
+  - Homepage:
 
-   ![Desktop- home page]()
+   ![Desktop - Homepage](media/performance-index-desktop.png)
 
+  - Game page:
+
+   ![Desktop - Game page](media/performance-game-desktop.png)
 
 </details>
 
@@ -581,3 +595,7 @@ Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event
   - HTML
   - CSS
   - JavaScript
+
+## Ackowledgements
+
+A special thank to my mentor __Dick Vlaanderen__ for his precious feedback on this project.
