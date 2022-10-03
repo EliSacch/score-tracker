@@ -336,7 +336,7 @@ function addNewGameValidation() {
             errorMsg.innerHTML = "Please, enter the initial score";
         } else if(mode === true && initialScore < 1) {
             errorMsg.innerHTML = "Initial score must be greater than 0";
-        } else if(limit != "" && (mode === false && initialScore > limit)) {
+        } else if(limit != "" && (mode === false && initialScore >= limit)) {
             errorMsg.innerHTML = "Initial score must be lower than limit";
         } else if(
             (limit != "" && 

@@ -281,26 +281,172 @@ This page contains also the button to reset the scores directly, if the players 
 
 To test my website I have opened it on different devices, to see if it was working as expected.
 
-- Browser tested:
-
-
-- Operating systems:
-
-
 ### Tests
 
   <details>
-  <summary>Testing</summary>
+  <summary>Home page - General</summary>
 
   |Action | Expected behavious | Result|
   |-------|--------------------|-------|
-  |action here | Bhaviour here | Pass/Fail |
-  |action here | Bhaviour here | Pass/Fail |
-  |action here | Bhaviour here | Pass/Fail |
-  |action here | Bhaviour here | Pass/Fail |
+  |Copy and paste the url in the browser to open it | index.html should open and show the homepage | Pass |
+  |Change the url to go to the game.html page | Because there is no game initiated I should be redirected to index.html | Pass |
+  |Click on the logo | Where are already in homepage so the page should refresh | Pass |
+  |Click on New Game button | The New Game modal should open | Pass |
+  |Click on the X button | The New Game modal should close | Pass |
+  |Check the Resume Game button | Because there is no game initiated the button should be disabled | Pass |
+  |Click on the About button | The About modal should open | Pass |
+  |Click on the X button | The About modal should close | Pass |
+  |Click on the GitHub icon | A new tab should open and show gitHub profile | Pass |
+  |Click on the LinkedIn icon | A new tab should open and show LinkedIn profile | Pass |
 
   </details>
 
+  <details>
+  <summary>New Game modal - General</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Uncheck the Darts Mode checkbox | The Limit field should show up and initial score suggested should be 0 | Pass |
+  |Check the Darts Mode checkbox | The Limit field should be hidden and initial score suggested should be 501 | Pass |
+  </details>
+
+  <details>
+  <summary>New Game modal - When Darts Mode is enabled</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Remove the value from Initial Score Field and click on Start | An error message should inform me to enter the initial score | Pass |
+  |Enter a negative value and click on Start| An error message should inform me that the Initial Score must be greater than 0 | Pass |
+  |Enter 0 and click on Start| An error message should inform me that the Initial Score must be greater than 0 | Pass |
+  |Enter a value less than -10000 and click on Start| An error message should inform me that the Initial Score must be greater than or equal to -10000 | Pass |
+  |Enter a value greater than 10000 and click on Start| An error message should inform me that the Initial Score must be less than or equal to 10000 | Pass |
+  |Enter something different from a number| An error message should inform me that the Initial Score must be a number| Pass |
+  |Enter a value between 1 and 9999 | Form should be submitted and I should be redirected to game.html | Pass |
+  </details>
+
+  <details>
+  <summary>New Game modal - When Darts Mode is disabled</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Remove the value from Initial Score Field and click on Start | An error message should inform me to enter the initial score | Pass |
+  |Enter a value less than -10000 and click on Start| An error message should inform me that the Initial Score must be greater than or equal to -10000 | Pass |
+  |Enter a value greater than 10000 and click on Start| An error message should inform me that the Initial Score must be less than or equal to 10000 | Pass |
+  |Enter a value less then -10000 or greater than 10000 in the Limit field| An error message should inform me that the value should be greater than or equal to -10000 or less then or equal to 10000| Pass |
+  |Enter a value between -9999 and 10000 as Initial Score, and an lower or equal value as Limit | An error message should inform me that the Initial Score must be less than Limit | Pass |
+  |Enter a value between -10000 and 9999 as Initial Score, and a number between Initial Score and 10000 as Limit | Form should be submitted and I should be redirected to game.html | Pass |
+  </details>
+  <details>
+  <summary>Home page - After one of the two game has been initiated</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Check the Resume Game button| Button should now be enabled | Pass|
+  |Click on the Resume Game button | I should be redirected to game.html | Pass |
+
+  </details>
+
+  <details>
+  <summary>Game page - General</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |The page loads after starting a new game | There should be no player showing on the screen, but a placeholder instead asking to add one player | Pass |
+  |Click on the logo | It should bring me back to the homepage | Pass |
+  |Click on the Add Player icon | The Add Player modal should open | Pass |
+  |Click on the X icon | The Add Player modal should close | Pass |
+  |Click on the Options icon | The Options modal should open | Pass |
+  |Click on the X icon | The Options modal should close | Pass |
+  |Check the Target field | It should display the limit set for the game, if any. It can display a message stating that the target is the higher/lwer score if limit is not set | Pass |
+  |Check the Finish Game button | Because there are no players yet the button should be disabled | Pass |
+  |Click on the GitHub icon | A new tab should open and show gitHub profile | Pass |
+  |Click on the LinkedIn icon | A new tab should open and show LinkedIn profile | Pass |
+
+  </details>
+
+  <details>
+  <summary>Add Player modal</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Click on start to submit without entering the Name | A message should inform me that a name is required | Pass |
+  |Enter a single character as Name and Submit| A message should inform me that the name must be at least 2 characters | Pass |
+  |Enter a valid name and keep the suggested Initial Score | The form should be submitted and the player added to the game | Pass |
+  |Enter a name of a player already existing | An error message should inform us that the playr already exists | Pass |
+</details>
+
+
+  <details>
+  <summary>Add Player modal - Initial score</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  | | If the Game was created in Darts Mode |  |
+  |Enter a valid name and a score lower than or equal to 0 | An error should inform us that Initial Score should be greater than 0 | Pass |
+  |Enter a valid name and a score higher than 10000 | An error should inform us that Initial Score should be less than or equal to 10000 | Pass |
+  Enter a valid name and a score greater than 0 and lower than or equal to 10000| The form should be submitted and the player added to the game | Pass |
+  | | If the Game was created in Non-darts Mode |  |
+  |Enter a valid name and a score higher than or equal to the limit set for the game | An error should inform us that Initial Score should be less than the target score | Pass |
+  |Enter a valid name and a score lower than -10000 | An error should inform us that Initial Score should be greater than or equal to -10000 | Pass |
+  Enter a valid name and a score greater than or equal to -10000 and lower than the Target score| The form should be submitted and the player added to the game | Pass |
+
+  </details>
+
+
+  <details>
+  <summary>Options modal</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Click on the New Game button | The New Game modal should open and work as in homepage | Pass|
+  |click on Reset Score button| The score for all players should be set to the initial Score choosen for the game  | Pass |
+
+  </details>
+
+  <details>
+  <summary>Players and Scores area</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Add one or multiple players | All players should have a dedicated line under Players and under Scores| Pass |
+  |Check the Scores area| To each player should be assigned the initial score set when adding the player | Pass |
+  | |Add and Remove points| |
+  |Under Players area check the line dedicated to each player | For each player there is a dedicated points input and two buttons (+) and (-) | Pass |
+  |In the points input add a value between -10000 and +10000 and click on the (+) button | The points are added to the player's score and the updated total is visible in the Scores section | Pass |
+  |In the points input add a value between -10000 and +10000 and click on the (-) button | The points are subtracted from the player's score and the updated total is visible in the Scores section | Pass |
+  |Enter a value lower than -10000 or greater than 10000 and click on (+) | An error message should inform us that the value is out of range | Pass |
+  |Enter a value lower than -10000 or greater than 10000 and click on (-) | An error message should inform us that the value is out of range | Pass |
+  |Try to enter something different from an integer: example -- or 4-7-3 and press (+) or (-)| An error message should inform us that the value is invalid | Pass |
+
+  </details>
+
+  <details>
+  <summary>Remove Player button</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Click on the (x) button next to a player-s name | The Remove Player confirmation message should appear | Pass |
+  |Click on Yes | The Player is removed from Playes section and from Scores section | Pass |
+  |Click on No | The Confirmation message will close and no action is taken on the player | Pass |
+
+  </details>
+
+  <details>
+  <summary>Finish Game features</summary>
+
+  |Action | Expected behavious | Result|
+  |-------|--------------------|-------|
+  |Check the Finish Game button | Now that there is at least one player the button is enabled | Pass |
+  |Click on the Finish Game button | The leaderboard should appear | Pass |
+  |Check the players order and the scores | If the game was in Darts Mode, the players should be ordered from the lower to the higher score | Pass |
+  |Check the players order and the scores | If the game was not in Darts Mode, the players should be ordered from the higher to the lower score | Pass |
+  |click on the X button | The Leaderboard should close | Pass |
+  |click on Reset Score button | The score for all players should be set to the initial value choosen for the game | Pass |
+  |If a limit was set, manually or automatically, add or remove points until one player reaches or exceeds the target | A modal should appear to ask if the players want to finish the game | Pass |
+  |click on Yes | The Leaderboard should appear | Pass |
+  |click on No | The message sgould disappear and the limit removed, so that players can keep playing | Pass |
+
+  </details>
 
 
 ### Validator Testing
