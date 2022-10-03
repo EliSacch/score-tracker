@@ -172,10 +172,18 @@ button.btn-rectangular:hover,
     position: relative;
 }
 
-#about > div{
+#about > div {
     max-height: 300px;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+#about p {
+    text-align: left;
+}
+
+#about h1 + p {
+    text-align: center;
 }
 
 .about-content {
