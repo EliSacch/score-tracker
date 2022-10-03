@@ -451,12 +451,37 @@ To test my website I have opened it on different devices, to see if it was worki
 
 ### Validator Testing
 
-- HTML
-  - Errors returned when passing the final version through the official [W3C validator](https://validator.w3.org/nu/#textarea)
-- CSS
-  - Errors when passing the final version through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator/validator)
-- JavaScript
-  - Errors found when passing the final version through the official [Jshint validator](https://jshint.com/)
+#### HTML
+
+ No Errors returned when passing the final version through the official [W3C validator](https://validator.w3.org/nu/#textarea)
+
+  <details>
+
+  <summary>W3 HTML validation screenshot</summary>
+
+  ![Index](media/html-validation-index.png)
+  ![Game](media/html-validation-game.png)
+  </details>
+
+
+#### CSS
+
+ No errors when passing the final version through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator/validator)
+
+  <details>
+
+  <summary>W3 CSS validation screenshot</summary>
+
+  ![Style](media/css-validation-main.png)
+  ![Animations](media/css-validation-animations.png)
+  </details>
+
+
+#### JavaScript
+
+JsHint has been used during development to identify any possible issue. And they were all resolved if found.
+
+  Errors found when passing the final version through the official [JsHint validator](https://jshint.com/)
 
 ### Fixed Bugs
 - Remove Players function:

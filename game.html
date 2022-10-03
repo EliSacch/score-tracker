@@ -42,7 +42,7 @@
             <!-- Placeholder for when there are no players added-->
             <div class="empty"><i class="fas fa-ban"></i></div>
         
-        <div id="players" class="display-area" area-labeledby="Player's list and add points section" role="region" tabindex="0">
+        <div id="players" class="display-area" role="region" tabindex="0">
 
         </div>
         <p class="title">Scores:</p>
@@ -98,7 +98,7 @@
                 <button class="btn btn-close menu-button" data-type="hideParent" aria-label="close Options modal"><i class="fas fa-times"></i></button>
 
                 <button id="new-game-btn" class="btn btn-rectangular" data-type="openNewGame" aria-label="Start a new game">New Game</button>
-                <button class="btn btn-rectangular secondary-color" data-type="resetScore" area-label="Reset player's scores">Reset Score</button>             
+                <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>             
             </div>
         </div>
         <!-- End of Options modal-->
@@ -171,10 +171,10 @@
                 
                 <button id="close-leaderboard-btn" class="btn btn-close menu-button" data-type="closeLeaderboard" aria-label="Close Leaderboard"><i class="fas fa-times"></i></button>
                 <div>
-                    <div id="ranking" area-label="leaderboard" role="region" tabindex="0"></div>
+                    <div id="ranking" role="region" tabindex="0"></div>
                 </div>
 
-                <button class="btn btn-rectangular secondary-color" data-type="resetScore" area-label="Reset player's scores">Reset Score</button>
+                <button class="btn btn-rectangular secondary-color" data-type="resetScore">Reset Score</button>
             </div>
         </div>
         <!-- End of Leaderboard modal-->

@@ -198,10 +198,10 @@ function openAbout() {
     const modal = document.getElementById('about');
     modal.style.display = "block";
     closeModalEsc();
-    element = modal.getElementsByClassName('modal-action-area')[0];
+    const element = modal.getElementsByClassName('modal-action-area')[0];
     element.classList.remove('inactive');
     element.classList.add('active');
-    document.getElementById('about').focus();
+    modal.focus();
 }           
 
 /** 
@@ -211,7 +211,7 @@ function openOptions() {
     const modal = document.getElementById('options');
     modal.style.display = "block";
     closeModalEsc();
-    element = modal.getElementsByClassName('modal-action-area')[0];
+    const element = modal.getElementsByClassName('modal-action-area')[0];
     element.classList.remove('inactive');
     element.classList.add('active');
     document.getElementById('new-game-btn').focus();
@@ -222,7 +222,7 @@ function openOptions() {
  * @param {DOMElement} parent 
  */
 function hideParent(parent) {
-    let element = parent.getElementsByClassName('modal-action-area')[0];
+    const element = parent.getElementsByClassName('modal-action-area')[0];
     if(element != null) {
         element.classList.remove('active');
         element.classList.add('inactive');
@@ -286,7 +286,7 @@ function toggleEmptyDivPlaceholder() {
                 placeholderEmpty[i].style.display = "block";
             } 
         } else {
-            for ( i = 0; i < placeholderEmpty.length; i++ ) {
+            for ( let i = 0; i < placeholderEmpty.length; i++ ) {
                 placeholderEmpty[i].style.display = "none";
             }
         }
@@ -317,10 +317,10 @@ function openNewGame() {
         }
     modal.style.display = "block";
     closeModalEsc();
-    element = modal.getElementsByClassName('modal-action-area')[0];
+    const element = modal.getElementsByClassName('modal-action-area')[0];
     element.classList.remove('inactive');
     element.classList.add('active');
-    document.getElementById('darts-mode').focus();
+    dartsModeChecked.focus();
 }
 
 /** Form validation for new game*/
@@ -376,7 +376,7 @@ function openAddPlayer() {
     intialValue.value = localStorage.getItem('globalInitialScore');
     modal.style.display = "block";
     closeModalEsc();
-    element = modal.getElementsByClassName('modal-action-area')[0];
+    const element = modal.getElementsByClassName('modal-action-area')[0];
     element.classList.remove('inactive');
     element.classList.add('active');
     document.getElementById('username').focus();
@@ -446,7 +446,6 @@ function displayPlayers() {
     const existingPlayers = JSON.parse(playersArray);
     const displayArea = document.getElementById('players');
     const scoreArea = document.getElementById('score-area');
-    const isDartsMode = localStorage.getItem('dartsMode');
     if(displayArea != null) {
         if(existingPlayers!=null) {
             for(let player of existingPlayers) {
@@ -626,7 +625,7 @@ function finishGameAlert() {
     const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
     closeModalEsc();
-    element = promptFinish.getElementsByClassName('modal-action-area')[0];
+    const element = promptFinish.getElementsByClassName('modal-action-area')[0];
     element.classList.remove('inactive');
     element.classList.add('active');
     document.getElementById('finish-btn').focus();
