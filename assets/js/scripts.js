@@ -90,26 +90,27 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    /* Redirect to index.html if there is no open game */
     let isGamePage = (window.location.href.indexOf('game')) != -1;
     if(isGamePage && (isDartsMode == null)) {
     location.href='index.html';
 }
 });
 
-/* INITIALIZE LOCAL STORAGE */
+/* Initialize local storage */
 const playersArray = localStorage.getItem('playersArray');
 const emptyArray = new Array();
 if(playersArray === null) {
     localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
 }
 
-/* REDIRECT TO HOME PAGE IF THERE IS NO GAME OPEN GAME*/
+/* Set initial score to 0 if not set by player */
 let globalInitialScore = localStorage.getItem('globalInitialScore');
 if(globalInitialScore === null) {
     localStorage.setItem('globalInitialScore', 0); 
 }
 
-/*MODAL TAB ACCESSIBILITY*/
+/*MODAL KEYBOARD ACCESSIBILITY*/
 const exitKey = {
     ESC: 27
 };
@@ -118,12 +119,18 @@ let previousActiveElement;
 const modals = document.getElementsByClassName('modal');
 const leaderboard = document.getElementById('leaderboard');
 
-/** This function closes the modal if ESC key is pressed */
+/** 
+ * This function closes the modal if ESC key is pressed 
+ */
 function closeModalEsc() {
     previousActiveElement = document.activeElement; 
     document.addEventListener('keydown', exitPressed);
     }
 
+/**
+ * This function closes the modal if ESC jey is pressed
+ * @param {Event} e 
+ */
 function exitPressed(e) { 
     if(e.keyCode == exitKey.ESC) {
        for(let modal of modals) {
@@ -136,6 +143,7 @@ function exitPressed(e) {
     }
 }   
 
+/* trap focus into modal when open - Start od code from Ben Nadel*/
 for(let modal of modals) {
     modal.addEventListener("keydown", function(event) {
         if(event.key.toLowerCase() == "tab") {
@@ -157,7 +165,8 @@ for(let modal of modals) {
             }
         }
     });
-}   
+} 
+/*End of code from Ben Nadel*/  
 
 /* ACTION SPECIFIC FUNCTION */
 
@@ -182,7 +191,9 @@ function toggleMode() {
     }   
 }
 
-/**This function opens the about modal */
+/**
+ * This function opens the about modal 
+ */
 function openAbout() {
     const modal = document.getElementById('about');
     modal.style.display = "block";
@@ -193,7 +204,9 @@ function openAbout() {
     document.getElementById('about').focus();
 }           
 
-/** This function opens the options modal */
+/** 
+ * This function opens the options modal 
+ */
 function openOptions() {
     const modal = document.getElementById('options');
     modal.style.display = "block";
@@ -203,6 +216,7 @@ function openOptions() {
     element.classList.add('active');
     document.getElementById('new-game-btn').focus();
 }
+
 /**
  * this function closes the modal
  * @param {DOMElement} parent 
@@ -217,12 +231,11 @@ function hideParent(parent) {
         }, 500);
     } else {
         parent.style.display = "none";
-    }
-    
+    }  
 }
 
 /**
- * This function prevents the possibility to enter e and + in number input
+ * This function prevents the possibility to enter e , . + in number input
  */
  function preventE() {
     /*Code from stackoverflow*/
@@ -243,7 +256,9 @@ function hideParent(parent) {
         /*End of code from stackoverfow*/
     }
 
-/** This function set the score for all players to 0 */
+/** 
+ * This function set the score for all players to 0 
+ */
 function resetScore() {
     const existingPlayers = JSON.parse(playersArray);
     const globalInitialScore = localStorage.getItem('globalInitialScore');
@@ -279,7 +294,10 @@ function toggleEmptyDivPlaceholder() {
 }
 
 /* NEW GAME FUNCTIONS */
-/** This function opens the new game modal */
+
+/** 
+ * This function opens the new game modal 
+ */
 function openNewGame() {
     const modal = document.getElementById('new-game-modal');
     const initialScore = document.getElementById('set-initial-score');
@@ -333,7 +351,9 @@ function addNewGameValidation() {
         }
 } 
 
-/** This function removes all players from the game */
+/** 
+ * This function resets the game parameters and removes all players
+ */
 function newGame() {
     //get values
     let mode = document.getElementById('darts-mode').checked;
@@ -348,6 +368,7 @@ function newGame() {
 }
 
 /* ADD PLAYER FUNCTIONS */
+
 /** This function opens the new player modal */
 function openAddPlayer() {
     const modal = document.getElementById('new-player');
@@ -397,7 +418,6 @@ function addPlayerValidation() {
         newPlayerForm.submit();
     }
 }
-
 
 /**
  * This functions adds a new player to local storage.
@@ -500,8 +520,12 @@ function displayPlayers() {
         }
     }
 
+/*REMOVE PLAYERS FUNCTIONS*/
 
-/** This function opens the remove player confirmation field */
+/**
+ * This function opens the remove player confirmation field
+ * @param {DOMElement} button 
+ */
 function openRemoveConfirmation(button) {
     const element = button.parentNode.querySelector('.remove-player-confirmation');
     if(element != null) {
@@ -512,7 +536,10 @@ function openRemoveConfirmation(button) {
     }
 }
 
-/** This function closes the remove player confirmation field */
+/**
+ * This function closes the remove player confirmation field
+ * @param {DOMElement} button 
+ */
 function closeRemoveConfirmation(button) {
     const element = button.parentNode.parentNode.querySelector('.remove-player-confirmation');
     if(element != null) {
@@ -538,7 +565,7 @@ function removePlayer(position) {
     }
 }
 
-/*UPDATE SCORE*/
+/*UPDATE SCORE FUNCTIONS*/
 
 /**
  * This function updates the player's score and then reloads page to update display area
@@ -576,7 +603,7 @@ function updateScore(position, operation) {
     }
 }
 
-/*FINISH GAME FUNCTIONS*/
+/*FINISH GAME AND LEADERBOUARD FUNCTIONS*/
 const playersScores = JSON.parse(playersArray);
 const targetScore = parseInt(localStorage.getItem('limit'));
 const isDartsMode = localStorage.getItem('dartsMode');
@@ -610,7 +637,6 @@ function removeLimit() {
     localStorage.setItem('limit', null);
 }
 
-
 /** This function redirects to the rank page */
 function finalScore() {
     let sortedList = playersScores;
@@ -631,7 +657,7 @@ function finalScore() {
    showRanking();
 }
 
-/** This function openas the leaderboard and shows the ranking */
+/** This function opens the leaderboard and shows the ranking */
 function showRanking() {
     const promptFinish = document.getElementById('prompt-finish');
     const leaderboard = document.getElementById('leaderboard');
@@ -662,6 +688,10 @@ function showRanking() {
     document.getElementById('close-leaderboard-btn').focus();
 }
 
+/**
+ * this function closes the Leaderboard
+ * @param {DOMElement} button 
+ */
 function closeLeaderboard(button) {
     const leaderboard = document.getElementById('leaderboard');
     leaderboard.classList.remove('active');

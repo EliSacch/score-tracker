@@ -335,6 +335,7 @@ To test my website I have opened it on different devices, to see if it was worki
 
 ### Unfixed Bugs
 
+- There are no known unfixed bugs.
 
 
 ### Performance
@@ -371,7 +372,7 @@ I have tested the performance in chrome, using lighthouse:
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-The live link can be found here - [Live Website]()
+The live link can be found here - [Live Website](https://elisacch.github.io/score-tracker/index.html)
 
 ### Local Deployment
   - For a local deployment follow these steps:
@@ -394,22 +395,15 @@ Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event
 
 - The code to sort an array of objects based on one parameter was taken from this tutorial of All things JavaScript, LLC [JavaScript Problem: Sorting an Array of Objects](https://www.youtube.com/watch?v=0d76_2sksWY)
 
+- The code to trap focus inside a modal was taken from this tutorial of Ben Nadel [Trapping Focus Within An Element Using Tab-Key Navigation In JavaScript](https://www.youtube.com/watch?v=VfKbvzGqEDU)
+
 
 ### Content
 
-- Instructions on how to ##### were taken from [Site name](link)
-
 - The icons were taken from [Font Awesome](https://fontawesome.com/)
 
-- The following fonts, used for the project, are from [Google Fonts](https://fonts.google.com/)
-
-### Media
-
-- The photos used for this website are from [Unsplash](https://unsplash.com/)
-  - Darts photo by [Immo Wegmann](https://unsplash.com/@macroman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-  
-  
-
+- The following fonts, used for the project, are from [Google Fonts](https://fonts.google.com/):
+  - Quicksand.
 
 ## Technologies used
 
