@@ -35,8 +35,8 @@ A simple and intiuitive design, easy to use for your games.
   - [Local Deployment](#local-deployment)
 
 - [Credits](#credits)
+  - [Code](#code)
   - [Content](#content)
-  - [Media](#media)
 
 - [Technologies used](#technologies-used)
 

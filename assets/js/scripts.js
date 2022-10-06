@@ -1,14 +1,25 @@
 /* INITIAL SETUP */
 
-/**
- * Script to run when page loads.
- */
+/* Initialize local storage */
+const playersArray = localStorage.getItem('playersArray');
+const emptyArray = new Array();
+if(playersArray === null) {
+    localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
+}
+
+/* Set initial score to 0 if not set by player */
+const globalInitialScore = localStorage.getItem('globalInitialScore');
+if(globalInitialScore === null) {
+    localStorage.setItem('globalInitialScore', 0); 
+}
+
+/* Script to run when page loads */
 document.addEventListener("DOMContentLoaded", function() {  
     /* The following code was taken from the Code Institute course content.*/
     const buttons = document.getElementsByTagName('button');
     for(let button of buttons ) {
         button.addEventListener("click", function() {
-            let buttonAction = this.getAttribute("data-type");
+            const buttonAction = this.getAttribute("data-type");
     /*End of code from coure*/
             switch (buttonAction) { 
                 case "about":
@@ -56,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     toggleEmptyDivPlaceholder();
     displayPlayers();
-    preventE();
+    preventCharInInput();
 
     /*Add event listener for darts mode checkbox*/
     const modeToggler = document.getElementById('darts-mode');
@@ -64,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
         modeToggler.addEventListener("change", toggleMode);
     }
 
-    /*Check if a new game has been initiated and disable resume button if there is no game*/
+    /* Check if a new game has been initiated and disable resume button if there is no game */
     const isDartsMode = localStorage.getItem('dartsMode');
     const resumeButton = document.getElementById('resume');
     if (isDartsMode == null && resumeButton != null ) {
@@ -91,26 +102,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     /* Redirect to index.html if there is no open game */
-    let isGamePage = (window.location.href.indexOf('game')) != -1;
+    const isGamePage = (window.location.href.indexOf('game')) != -1;
     if(isGamePage && (isDartsMode == null)) {
     location.href='index.html';
-}
+    }
 });
 
-/* Initialize local storage */
-const playersArray = localStorage.getItem('playersArray');
-const emptyArray = new Array();
-if(playersArray === null) {
-    localStorage.setItem('playersArray', JSON.stringify(emptyArray)); 
-}
-
-/* Set initial score to 0 if not set by player */
-let globalInitialScore = localStorage.getItem('globalInitialScore');
-if(globalInitialScore === null) {
-    localStorage.setItem('globalInitialScore', 0); 
-}
-
 /*MODAL KEYBOARD ACCESSIBILITY*/
+
 const exitKey = {
     ESC: 27
 };
@@ -147,10 +146,10 @@ function exitPressed(e) {
 for(let modal of modals) {
     modal.addEventListener("keydown", function(event) {
         if(event.key.toLowerCase() == "tab") {
-            let focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            let target = event.target;
+            const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const target = event.target;
 
-            let last = (focusableElements.length)-1;
+            const last = (focusableElements.length)-1;
 
             if(event.shiftKey) {
                 if(target == focusableElements[0]) {
@@ -166,11 +165,13 @@ for(let modal of modals) {
         }
     });
 } 
-/*End of code from Ben Nadel*/  
+/* End of code from Ben Nadel */  
 
 /* ACTION SPECIFIC FUNCTION */
 
-/** This function toggled darts mode */
+/**
+* This function toggles darts mode
+*/
 function toggleMode() {
     const dartsModeToggler = document.getElementById('darts-mode');
     if(dartsModeToggler != null) {
@@ -237,7 +238,7 @@ function hideParent(parent) {
 /**
  * This function prevents the possibility to enter e , . + in number input
  */
- function preventE() {
+ function preventCharInInput() {
     /*Code from stackoverflow*/
         const inputNumber = document.getElementsByClassName("restrict-input");
         for(let inputs of inputNumber) {
@@ -273,7 +274,7 @@ function resetScore() {
     }
 }
 
-let playersList = document.getElementById('players');
+const playersList = document.getElementById('players');
 const placeholderEmpty = document.getElementsByClassName('empty');
 /**
  * This function toggles the placeholder element for players div.
@@ -323,12 +324,14 @@ function openNewGame() {
     dartsModeChecked.focus();
 }
 
-/** Form validation for new game*/
+/** 
+ * This function is used for form validation for new game
+ */
 function addNewGameValidation() {
     const errorMsg = document.getElementById('new-game-error-msg');
-    let initialScore = document.getElementById('set-initial-score').value;
-    let limit = document.getElementById('limit').value;
-    let mode = document.getElementById('darts-mode').checked;
+    const initialScore = document.getElementById('set-initial-score').value;
+    const limit = document.getElementById('limit').value;
+    const mode = document.getElementById('darts-mode').checked;
 
     const newGameForm = document.getElementById('new-game-form');
 
@@ -356,9 +359,9 @@ function addNewGameValidation() {
  */
 function newGame() {
     //get values
-    let mode = document.getElementById('darts-mode').checked;
-    let initialScore = document.getElementById('set-initial-score').value;
-    let limit = document.getElementById('limit').value;
+    const mode = document.getElementById('darts-mode').checked;
+    const initialScore = document.getElementById('set-initial-score').value;
+    const limit = document.getElementById('limit').value;
     localStorage.setItem('dartsMode', JSON.stringify(mode));
     localStorage.setItem('globalInitialScore', JSON.stringify(parseInt(initialScore)));
     localStorage.setItem('limit', JSON.stringify(parseInt(limit)));
@@ -369,7 +372,9 @@ function newGame() {
 
 /* ADD PLAYER FUNCTIONS */
 
-/** This function opens the new player modal */
+/** 
+ * This function opens the new player modal 
+ */
 function openAddPlayer() {
     const modal = document.getElementById('new-player');
     const intialValue = document.getElementById('initial-score');
@@ -382,7 +387,9 @@ function openAddPlayer() {
     document.getElementById('username').focus();
 }
 
-/** Form validation for new player*/
+/** 
+ * This function is used for form validation for new player
+ */
 function addPlayerValidation() {
     const limit = parseInt(localStorage.getItem('limit'));
     const existingPlayers = JSON.parse(playersArray);
@@ -449,9 +456,9 @@ function displayPlayers() {
     if(displayArea != null) {
         if(existingPlayers!=null) {
             for(let player of existingPlayers) {
-                let username = player.name;
-                let score = player.score;
-                let playerPosition = existingPlayers.indexOf(player);
+                const username = player.name;
+                const score = player.score;
+                const playerPosition = existingPlayers.indexOf(player);
 
                 //create HTML for the players areas
                 const newDiv = document.createElement('div');
@@ -482,7 +489,7 @@ function displayPlayers() {
                 const buttons = document.getElementsByTagName('button');
                 for(let button of buttons ) {
                     button.addEventListener("click", function() {
-                        let buttonAction = this.getAttribute("data-type");
+                        const buttonAction = this.getAttribute("data-type");
                         switch (buttonAction) { 
                             case "openRemoveConfirmation":
                                 openRemoveConfirmation(button);
@@ -509,11 +516,11 @@ function displayPlayers() {
                 scoreArea.appendChild(scoreDiv);
     
                 }
-                preventE();
+                preventCharInInput();
              }
         }
         toggleEmptyDivPlaceholder();
-        let addPlayerButton = document.getElementById('add-player-btn');
+        const addPlayerButton = document.getElementById('add-player-btn');
         if(addPlayerButton != null) {
             addPlayerButton.focus();
         }
@@ -523,7 +530,7 @@ function displayPlayers() {
 
 /**
  * This function opens the remove player confirmation field
- * @param {DOMElement} button 
+ * @param {DOM Element} button 
  */
 function openRemoveConfirmation(button) {
     const element = button.parentNode.querySelector('.remove-player-confirmation');
@@ -537,7 +544,7 @@ function openRemoveConfirmation(button) {
 
 /**
  * This function closes the remove player confirmation field
- * @param {DOMElement} button 
+ * @param {DOM Element} button 
  */
 function closeRemoveConfirmation(button) {
     const element = button.parentNode.parentNode.querySelector('.remove-player-confirmation');
@@ -603,6 +610,7 @@ function updateScore(position, operation) {
 }
 
 /*FINISH GAME AND LEADERBOUARD FUNCTIONS*/
+
 const playersScores = JSON.parse(playersArray);
 const targetScore = parseInt(localStorage.getItem('limit'));
 const isDartsMode = localStorage.getItem('dartsMode');
@@ -620,7 +628,9 @@ if(targetScore != "null") {
     }
 }
 
-/** this function prompts user to finish game if limit is set */
+/** 
+ * This function prompts user to finish game if limit is set 
+ */
 function finishGameAlert() {
     const promptFinish = document.getElementById('prompt-finish');
     promptFinish.style.display = "block";
@@ -631,12 +641,16 @@ function finishGameAlert() {
     document.getElementById('finish-btn').focus();
 }
 
-/** This functions erase the limit if players want to continue the game */
+/** 
+ * This functions erase the limit if players want to continue the game 
+ */
 function removeLimit() {
     localStorage.setItem('limit', null);
 }
 
-/** This function redirects to the rank page */
+/**
+ *  This function redirects to the rank page 
+ */
 function finalScore() {
     let sortedList = playersScores;
     const isDartsMode = localStorage.getItem('dartsMode');
@@ -656,7 +670,9 @@ function finalScore() {
    showRanking();
 }
 
-/** This function opens the leaderboard and shows the ranking */
+/** 
+ * This function opens the leaderboard and shows the ranking 
+ */
 function showRanking() {
     const promptFinish = document.getElementById('prompt-finish');
     const leaderboard = document.getElementById('leaderboard');
@@ -667,9 +683,9 @@ function showRanking() {
     const finalRanking = JSON.parse(localStorage.getItem('finalRanking'));
     const ranking = document.getElementById('ranking');
     for(let player of finalRanking) {
-        let username = player.name;
-        let score = player.score;
-        let playerPosition = finalRanking.indexOf(player);
+        const username = player.name;
+        const score = player.score;
+        const playerPosition = finalRanking.indexOf(player);
     
         //create HTML for the players areas
         const newDiv = document.createElement('div');
@@ -688,7 +704,7 @@ function showRanking() {
 }
 
 /**
- * this function closes the Leaderboard
+ * This function closes the Leaderboard
  * @param {DOMElement} button 
  */
 function closeLeaderboard(button) {
@@ -701,7 +717,9 @@ function closeLeaderboard(button) {
     }, 500); 
 }
 
-/** This function clears the leaderboard when we close it */
+/** 
+ * This function clears the leaderboard when we close it 
+ */
 function clearLeaderboard() {
     const ranking = document.getElementById('ranking');
     ranking.innerHTML = "";
