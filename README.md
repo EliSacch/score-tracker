@@ -40,6 +40,8 @@ A simple and intiuitive design, easy to use for your games.
 
 - [Technologies used](#technologies-used)
 
+- [Acknowledgements](#acknowledgements)
+
 ## Design and User Experience
 
 ### Design
@@ -483,6 +485,13 @@ JsHint has been used during development to identify any possible issue and resol
 
 0 errors were found when passing the final version through the official [JsHint validator](https://jshint.com/), but only 4 warnings.
 
+I have checked these for warnings, and three of them refer to referencing an outer scoped variable. I have examined the code and this is not causing any issue, but I will note it for best practices.
+
+One of them suggests the use of an Array literal notation, but in this case I preferred to use object to reference the key ESC.
+
+At the bottom it identifies three unused variable.
+After checking them I caould confirme that they were functions, and that I have called them in other parts of the code. 
+
  <details>
   <summary>JsHint - JS validation screenshot</summary>
 
@@ -596,6 +605,6 @@ Lesson: Love Maths Walkthrough Project - Adding some JavaScript - Creating Event
   - CSS
   - JavaScript
 
-## Ackowledgements
+## Acknowledgements
 
 A special thank to my mentor __Dick Vlaanderen__ for his precious feedback on this project.
