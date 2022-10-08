@@ -7,6 +7,8 @@ Score TRACKER is the solution.
 
 A simple and intiuitive design, easy to use for your games.
 
+The main feature available in this score tracker is the "Darts" mode, which allows you to show the leaderboard from the lower to the higher score, in accordance with games such as darts, where the lower score wins.
+
 ![Responsive Mockup](media/am-i-responsive.png)
 
 [See deployed website](https://elisacch.github.io/score-tracker/index.html)

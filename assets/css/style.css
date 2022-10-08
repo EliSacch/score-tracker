@@ -45,7 +45,6 @@ body {
     height: 100vh;
     width: 100vw;
     color: var(--neutral-color);
-    font-size: 3rem;
     font-family: var(--basic-font);
 }
 
@@ -53,6 +52,10 @@ body {
     width: fit-content;
     max-width: 90%;
     margin: 0 auto;
+}
+
+.content p {
+    font-size: 1.5rem;
 }
 
 .center-items {
@@ -241,7 +244,7 @@ header {
 
 .menu > ul {
     list-style: none;
-    gap: .25em;     
+    gap: .5em;     
 }
 
 .menu > ul > li {
@@ -275,8 +278,9 @@ header {
     margin: 0 auto;
 }
 
-.empty i {
-    font-size: 2rem;
+.empty li {
+    font-size: 1.2rem;
+    text-align: left;
 }
 
 .display-area {
@@ -413,7 +417,6 @@ width: 100%;
     height: 100%;
     display: flex;
     align-items: flex-end; 
-    margin-top: 1em;
 }
 
 .finish {
@@ -655,7 +658,7 @@ li a:focus > i {
 
 /* media queries */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
     .btn-rectangular {
         font-size: 1.2rem;
     }

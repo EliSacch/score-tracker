@@ -38,7 +38,13 @@
         <p class="title">Players:</p>
             <!-- Placeholder for when there are no players added-->
             <div class="empty">
-                <p>Add one player to start tracking your scores <i class="fas fa-user-plus"></i></p>
+
+                <ol>
+                    <li>Click <i class="fas fa-user-plus"></i> to add players</li>
+                    <li>Add and remove points according to your game</li>
+                    <li>Reach the target, if set, or click "Finish Game" to show the winner</li>
+                </ol>
+
             </div>
         
         <div id="players" class="display-area" role="region" tabindex="0">
@@ -159,7 +165,7 @@
                             <button class="btn btn-rectangular secondary-color" data-type="continueGame" aria-label="Continue Game">No</button>
                             <button id="finish-btn" class="btn btn-rectangular" data-type="finalScore" aria-label="Show Leaderboard">Finish</button>
                     </div>  
-                        
+                      
             </div>
         </div>
         <!-- End of Finish modal-->
