@@ -273,7 +273,10 @@ header {
     text-align: center;
     width: 80%;
     margin: 0 auto;
-    
+}
+
+.empty i {
+    font-size: 2rem;
 }
 
 .display-area {
@@ -649,6 +652,14 @@ li a:focus > i {
     font-size: 1rem;
     margin: 5px;
 }
+
+/* media queries */
+
+@media screen and (max-width: 500px) {
+    .btn-rectangular {
+        font-size: 1.2rem;
+    }
+  }
 
 @media screen and (max-width: 400px) {
 
