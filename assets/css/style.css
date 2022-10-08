@@ -4,6 +4,7 @@
     /* color scheme */
     --primary-color: hsl(139, 51%, 42%);
     --secondary-color: hsl(341, 98%, 56%);
+    --secondary-color-lighter: hsl(341, 98%, 66%);
     --dark-color: hsl(0, 2%, 16%);
     --neutral-color: hsl(38, 89%, 86%);
 
@@ -65,7 +66,7 @@ body {
 #title {
     font-size: 1.6rem;
     margin: 20px;
-    font-weight: normal;
+    font-weight: lighter;
 }
 .display-inline {
     display: flex;
@@ -221,6 +222,7 @@ button.btn-rectangular:hover,
 }
 
 #logo {
+    margin-top: 30px;
     font-size: 2rem;
 }
 
@@ -229,7 +231,6 @@ button.btn-rectangular:hover,
 }
 
 header {
-    padding: .5em 0;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -267,16 +268,12 @@ header {
 
 .empty {
     display: block;
-    opacity: .2;
-    text-align: center;
-    margin: 0;
-}
-.empty p {
+    opacity: .4;
     font-size: .6em;
-}
-
-.empty i {
-    font-size: 5em;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    
 }
 
 .display-area {
@@ -515,7 +512,7 @@ font-size: 1.2rem;
 #error-msg,
 #modal-error-msg,
 #new-game-error-msg  {
-    color: var(--secondary-color);
+    color: var(--secondary-color-lighter);
     font-size: 1rem;
     margin-bottom: 1rem;
 }
