@@ -175,19 +175,25 @@ for(let modal of modals) {
 function toggleMode() {
     const dartsModeToggler = document.getElementById('darts-mode');
     if(dartsModeToggler != null) {
+        const showTarget = document.getElementById('target-declaration'); 
         const limitInput = document.getElementById('limit');
         const limitLabel = document.getElementById('limit-label');
         const initialScore = document.getElementById('set-initial-score');
+        const targetZero = document.getElementById('darts-target');
         if(dartsModeToggler.checked) {
+            showTarget.innerHTML = "Lower score wins";
             limitInput.value = 0;
             initialScore.value = 501;
             limitInput.style.display="none";
             limitLabel.style.display="none";
+            targetZero.style.display="block";
         } else {
+            showTarget.innerHTML = "Higher score wins";
             limitInput.value = "";
             initialScore.value = 0;
             limitInput.style.display="block";
             limitLabel.style.display="block";
+            targetZero.style.display="none";
         }
     }   
 }
@@ -301,20 +307,26 @@ function toggleEmptyDivPlaceholder() {
  */
 function openNewGame() {
     const modal = document.getElementById('new-game-modal');
+    const showTarget = document.getElementById('target-declaration');
     const initialScore = document.getElementById('set-initial-score');
     const limitInput = document.getElementById('limit');
     const limitLabel = document.getElementById('limit-label');
+    const targetZero = document.getElementById('darts-target');
     const dartsModeChecked = document.getElementById('darts-mode');
     if(dartsModeChecked.checked) {
+            showTarget.innerHTML = "Lower score wins";
             limitInput.value = 0;
             initialScore.value = 501;
             limitInput.style.display="none";
             limitLabel.style.display="none";
+            targetZero.style.display="block";
         } else {
+            showTarget.innerHTML = "Higher score wins";
             limitInput.value = "";
             initialScore.value = 0;
             limitInput.style.display="block";
             limitLabel.style.display="block";
+            targetZero.style.display="none";
         }
     modal.style.display = "block";
     closeModalEsc();
